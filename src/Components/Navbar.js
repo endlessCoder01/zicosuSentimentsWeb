@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="navbar-links-container">
         <a href="">Home</a>
         <a href="">Achievements</a>
-        <a href="/contact">Contact</a>
+        {/* <a href="/contact">Contact</a> */}
         <Link to="/login" className="primary-button">
           Login
         </Link>
