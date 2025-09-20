@@ -45,77 +45,67 @@ const SentimentsPage = () => {
   );
 
   return (
-    <div
-      style={{
-        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: "100vh",
-        background: "#f5f8fa",
-        overflow: "hidden",
-      }}
-    >
+<div
+  style={{
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "100%",
+    background: "#f5f8fa",
+  }}
+>
+
       {/* 📌 Header */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          maxWidth: "600px",
-          background: "#fff",
-          padding: "15px 0",
-          borderBottom: "1px solid #e6ecf0",
-          borderRadius: "0 0 20px 20px",
-          boxShadow: "0px 2px 6px rgba(0,0,0,0.05)",
-          zIndex: 20,
-          textAlign: "center",
-        }}
-      >
-        <h1 style={{ margin: 0, color: "#1da1f2", fontWeight: "bold" }}>
-          Sentiment Space 
-        </h1>
-   {/* 🔍 Search Bar */}
-      <div
+   <div
+  style={{
+    position: "sticky",
+    top: 0,
+    width: "100%",
+    maxWidth: "600px",
+    background: "#fff",
+    padding: "15px 0",
+    borderBottom: "1px solid #e6ecf0",
+    borderRadius: "0 0 20px 20px",
+    boxShadow: "0px 2px 6px rgba(0,0,0,0.05)",
+    textAlign: "center",
+    zIndex: 20,
+  }}
+>
+  <h1 style={{ margin: 0, color: "#1da1f2", fontWeight: "bold" }}>
+    Sentiment Space
+  </h1>
+  <input
+    type="text"
+    placeholder="Search sentiments..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    style={{
+      width: "95%",
+      padding: "12px 15px",
+      borderRadius: "30px",
+      border: "1px solid #ddd",
+      outline: "none",
+      fontSize: "12px",
+      background: "#f5f8fa",
+      marginTop: "10px",
+    }}
+  />
+</div>
 
-      >
-        <input
-          type="text"
-          // need to add the fa search icon
-          placeholder='Search sentiments...'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            width: "95%",
-            padding: "12px 15px",
-            borderRadius: "30px",
-            border: "1px solid #ddd",
-            outline: "none",
-            fontSize: "12px",
-            background: "#f5f8fa",
-            margin: 5,
-          }}
-        />
-      </div>
-
-      </div>
 
    
 
       {/* Scrollable Feed */}
-      <div
-        style={{
-          flex: 1,
-          width: "100%",
-          maxWidth: "600px",
-          marginTop: "140px",
-          marginBottom: "160px",
-          overflowY: "auto",
-          padding: "0 10px",
-        }}
-      >
+   <div
+  style={{
+    flex: 1, // fills remaining space
+    width: "100%",
+    maxWidth: "600px",
+    overflowY: "auto",
+    padding: "10px",
+  }}
+>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post) => (
             <div
@@ -125,7 +115,7 @@ const SentimentsPage = () => {
                 padding: "15px",
                 borderRadius: "20px",
                 boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.29)",
-                transition: "transform 0.2s, box-shadow 0.2s",
+                transition: "all 0.3s ease, box-shadow 0.2s",
                 marginBottom: "15px",
                 cursor: "pointer",
               }}
@@ -163,57 +153,52 @@ const SentimentsPage = () => {
       </div>
 
       {/* Sentiment Box */}
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "600px",
-          background: "#fff",
-          padding: "15px",
-          border: "1px solidrgb(0, 0, 0)",
-          borderRadius: "20px 20px 20px 20px",
-          boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.48)",
-          position: "fixed",
-          bottom: 10,
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      >
-        <textarea
-          placeholder="What are the views you would like to share or advise to the ZICOSU members?"
-          value={newPost}
-          onChange={(e) => setNewPost(e.target.value)}
-          style={{
-            width: "100%",
-            height: "70px",
-            padding: "12px",
-            borderRadius: "15px",
-            border: "1px solid #ddd",
-            outline: "none",
-            resize: "none",
-            fontSize: "15px",
-            background: "#f9f9f9",
-            marginBottom: "10px",
-          }}
-        ></textarea>
-        <button
-          onClick={handlePost}
-          style={{
-            background: "#1da1f2",
-            color: "#fff",
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "25px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            float: "right",
-            transition: "background 0.3s",
-          }}
-          onMouseEnter={(e) => (e.target.style.background = "#0d8ddb")}
-          onMouseLeave={(e) => (e.target.style.background = "#1da1f2")}
-        >
-          Send
-        </button>
-      </div>
+  <div
+  style={{
+    width: "100%",
+    maxWidth: "600px",
+    background: "#fff",
+    padding: "15px",
+    border: "1px solid #ddd",
+    borderRadius: "20px",
+    boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.1)",
+  }}
+>
+  <textarea
+    placeholder="What are the views you would like to share or advise to the ZICOSU members?"
+    value={newPost}
+    onChange={(e) => setNewPost(e.target.value)}
+    style={{
+      width: "100%",
+      height: "70px",
+      padding: "12px",
+      borderRadius: "15px",
+      border: "1px solid #ddd",
+      outline: "none",
+      resize: "none",
+      fontSize: "15px",
+      background: "#f9f9f9",
+      marginBottom: "10px",
+    }}
+  ></textarea>
+  <button
+    onClick={handlePost}
+    style={{
+      background: "#1da1f2",
+      color: "#fff",
+      padding: "10px 20px",
+      border: "none",
+      borderRadius: "25px",
+      cursor: "pointer",
+      fontWeight: "bold",
+      float: "right",
+      transition: "background 0.3s",
+    }}
+  >
+    Send
+  </button>
+</div>
+
     </div>
   );
 };

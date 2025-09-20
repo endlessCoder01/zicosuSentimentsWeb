@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
-  FaHome,
-  FaInfoCircle,
-  FaPhoneAlt,
-  FaServicestack,
   FaBars,
-  FaTimes,
-  FaPowerOff,
 } from "react-icons/fa";
 import "./LandingPage.css";
 import Footer from "../Components/Footer";
 import Work from "../Components/Work";
-import Logo from "../Assets/home-banner-image.png";
-import { Link } from "react-router-dom";
+
 
 // Sample slider images
 import Slide1 from "../Assets/buse3.png";
@@ -38,55 +31,13 @@ const AuthenticatedLanding = () => {
   }, [slides.length]);
 
   return (
-    <div className="landing-container">
-      {/* Sidebar Navbar */}
-      <nav className={`sidebar ${isOpen ? "open" : ""}`}>
-        <div className="sidebar-header">
-          <h2 className="logo">
-            <img
-              src={Logo}
-              alt="logo"
-              style={{ height: 50, width: 50, borderRadius: 35 }}
-            />
-          </h2>
-          <FaTimes className="close-btn" onClick={() => setIsOpen(false)} />
-        </div>
-
-        <ul>
-          <li>
-            <Link to="/home">
-              <FaHome className="icon" /> Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/sentiments">
-              <FaServicestack className="icon" /> Send Sentiments
-            </Link>
-          </li>
-          {/* <li>
-            <Link to="/contact">
-              <FaPhoneAlt className="icon" /> Contact Us
-            </Link>
-          </li> */}
-          <li>
-            <Link to="/about">
-              <FaInfoCircle className="icon" /> About
-            </Link>
-          </li>
-          <li>
-            <Link to="#">
-              <FaPowerOff className="icon" /> Logout
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
+    <div>
       {/* Main Content */}
-      <main className="main-content">
+
         {/* Mobile Hamburger */}
         <FaBars className="hamburger" onClick={() => setIsOpen(true)} />
 
-        <h1>
+        <h1 style={{margin:10}}>
           <marquee>Welcome to Our Platform</marquee>
         </h1>
 
@@ -167,7 +118,7 @@ const AuthenticatedLanding = () => {
         </div>
 
         <Footer />
-      </main>
+     
     </div>
   );
 };

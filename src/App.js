@@ -12,6 +12,7 @@ import { useState } from "react";
 import SentimentsPage from "./Components/Sentiments";
 import ContactUs from "./Components/ContactUs";
 import AboutUs from "./Components/AboutUs";
+import AuthenticatedLayout from "./layouts/authenticatedLayout";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,9 +33,11 @@ function App() {
         <Routes>
           {isAuthenticated ? (
             <>
-              <Route path="/home" element={<AuthenticatedLanding />} />
-              <Route path="/sentiments" element={<SentimentsPage />} />
-              <Route path="/about" element={<AboutUs />} />
+              <Route element={<AuthenticatedLayout />}>
+                <Route path="/home" element={<AuthenticatedLanding />} />
+                <Route path="/sentiments" element={<SentimentsPage />} />
+                <Route path="/about" element={<AboutUs />} />
+              </Route>
               <Route path="*" element={<Navigate to="/home" replace />} />
             </>
           ) : (
