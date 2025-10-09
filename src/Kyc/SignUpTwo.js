@@ -51,7 +51,7 @@ const SignUpTwo = () => {
     //       title: "Login Failed",
     //       text: errorMessage,
     //     });
-    //     console.error("Login error:", errorMessage); // Log error to console
+    //     console.error("Login error:", errorMessage); 
     //   }
 
     } catch (error) {
@@ -60,7 +60,7 @@ const SignUpTwo = () => {
         title: "Error",
         text: "An error occurred during login. Please try again.",
       });
-      console.error("Error fetching user details:", error); // Log error to console
+      console.error("Error fetching user details:", error); 
     } finally {
       setLoading(false);
     }
@@ -91,7 +91,7 @@ const SignUpTwo = () => {
             padding: "32px",
           }}
         >
-          {/* Header */}
+         
           <div style={{ textAlign: "center", marginBottom: "24px" }}>
             <h1
               style={{
@@ -111,7 +111,7 @@ const SignUpTwo = () => {
             </p>
           </div>
 
-          {/* Form */}
+        
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
 
             {/*pp*/}

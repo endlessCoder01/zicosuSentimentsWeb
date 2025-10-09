@@ -4,7 +4,12 @@ import Swal from "sweetalert2";
 
 const SignUpOne = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [reg_number, setReg_number] = useState()
+  const [name, setName] = useState()
+  const [surname, setSurname] = useState()
+  const [dob, setDob] = useState()
+  const [gender, setGender] = useState()
+  const [campus, setCampus] = useState()
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -115,9 +120,9 @@ const SignUpOne = () => {
             {/* reg_number */}
             <div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type=""text
+                value={reg_number}
+                onChange={(e) => setReg_number(e.target.value)}
                 required
                 placeholder="Enter your Student Number"
                 style={{
@@ -142,9 +147,9 @@ const SignUpOne = () => {
             {/* name*/}
             <div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
                 placeholder="Enter your name"
                 style={{
@@ -170,9 +175,9 @@ const SignUpOne = () => {
             <div>
   
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
                 required
                 placeholder="Enter your surname"
                 style={{
@@ -196,10 +201,11 @@ const SignUpOne = () => {
 
             {/*gender */}
             <div>
+              {/* i need to use radio buttons here for male and female  */}
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
                 required
                 placeholder="Enter your gender"
                 style={{
@@ -223,10 +229,21 @@ const SignUpOne = () => {
 
             {/*dob */}
             <div>
+              <label
+                style={{
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                  color: "#424344ff",
+                  display: "block",
+                  marginBottom: "2px",
+                  marginLeft: "3px"
+                }}
+              >Date of Birth:
+              </label>
               <input
                 type="date"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
                 required
                 placeholder="Enter your DOB"
                 style={{
@@ -250,10 +267,11 @@ const SignUpOne = () => {
 
             {/*campus*/}
             <div>
+              {/* here also i should use a select item */}
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={campus}
+                onChange={(e) => setCampus(e.target.value)}
                 required
                 placeholder="Select your campus"
                 style={{
