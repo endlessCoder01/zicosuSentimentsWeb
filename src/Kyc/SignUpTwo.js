@@ -53,6 +53,7 @@ const SignUpTwo = () => {
     //     });
     //     console.error("Login error:", errorMessage); // Log error to console
     //   }
+
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -100,26 +101,27 @@ const SignUpTwo = () => {
                 marginBottom: "5px",
               }}
             >
-              Welcome
+              Almost There...
             </h1>
             <p style={{ color: "#6b7280", fontSize: "14px" }}>
-              Please create your account
+              Closer to finishing the signup...
             </p>
             <p style={{ color: "#bea7a7ff", fontSize: "17px", fontWeight: "bold", marginTop: "6px" }}>
-              Page 1 of 2
+              Page 2 of 2
             </p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            {/* reg_number */}
+
+            {/*pp*/}
             <div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Enter your Student Number"
+                placeholder="Enter your pp"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -139,34 +141,7 @@ const SignUpTwo = () => {
               />
             </div>
 
-            {/* name*/}
-            <div>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Enter your name"
-                style={{
-                  width: "100%",
-                  padding: "12px 16px",
-                  borderRadius: "8px",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#ffc000";
-                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#d1d5db";
-                  e.target.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/* surname */}
+            {/* home address*/}
             <div>
   
               <input
@@ -174,7 +149,7 @@ const SignUpTwo = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Enter your surname"
+                placeholder="Enter your Address"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -194,14 +169,14 @@ const SignUpTwo = () => {
               />
             </div>
 
-            {/*gender */}
+            {/*contact */}
             <div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Enter your gender"
+                placeholder="Enter your phone number"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -221,41 +196,67 @@ const SignUpTwo = () => {
               />
             </div>
 
-            {/*dob */}
-            <div>
-              <input
-                type="date"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Enter your DOB"
-                style={{
-                  width: "100%",
-                  padding: "12px 16px",
-                  borderRadius: "8px",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#ffc000";
-                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#d1d5db";
-                  e.target.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/*campus*/}
+            {/*email*/}
             <div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Select your campus"
+                placeholder="Enter your email"
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  border: "1px solid #d1d5db",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#ffc000";
+                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db";
+                  e.target.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/*password*/}
+            <div>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your password"
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  border: "1px solid #d1d5db",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#ffc000";
+                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db";
+                  e.target.style.boxShadow = "none";
+                }}
+              />
+            </div>
+            {/*password*/}
+            <div>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Confirm your password"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -317,56 +318,13 @@ const SignUpTwo = () => {
                       animation: "spin 1s linear infinite",
                     }}
                   ></div>
-                  Loading...
+                  Signing Up...
                 </div>
               ) : (
-                "Next"
+                "Sign Up"
               )}
             </button>
           </form>
-
-          {/* Divider */}
-          <div style={{ margin: "24px 0", position: "relative", textAlign: "center" }}>
-            <div
-              style={{
-                borderTop: "1px solid #d1d5db",
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                right: 0,
-              }}
-            ></div>
-            <span
-              style={{
-                position: "relative",
-                backgroundColor: "#fff",
-                padding: "0 8px",
-                color: "#6b7280",
-                fontSize: "14px",
-              }}
-            >
-              Already have an account?
-            </span>
-          </div>
-
-          <div style={{ textAlign: "center" }}>
-            <button
-              type="button"
-              style={{
-                color: "#002966",
-                fontWeight: "500",
-                fontSize: "14px",
-                cursor: "pointer",
-                background: "transparent",
-                border: "none",
-                transition: "color 0.2s ease",
-              }}
-              onMouseEnter={(e) => (e.target.style.color = "#ee5237ff")}
-              onMouseLeave={(e) => (e.target.style.color = "#ec1212ff")}
-            >
-              Sign In
-            </button>
-          </div>
         </div>
 
         <div
