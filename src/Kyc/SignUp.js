@@ -1,63 +1,62 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 const SignUpOne = () => {
   const [email, setEmail] = useState("");
-  const [reg_number, setReg_number] = useState()
-  const [name, setName] = useState()
-  const [surname, setSurname] = useState()
-  const [dob, setDob] = useState()
-  const [gender, setGender] = useState()
-  const [campus, setCampus] = useState()
+  const [reg_number, setReg_number] = useState();
+  const [name, setName] = useState();
+  const [surname, setSurname] = useState();
+  const [dob, setDob] = useState();
+  const [gender, setGender] = useState();
+  const [campus, setCampus] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
+      Swal.fire({
+        icon: "success",
+        title: "Welcome Back",
+        text: "Welcome",
+      });
 
-          Swal.fire({
-          icon: "success",
-          title: "Welcome Back",
-          text: "Welcome",
-        });
+      navigate("/home");
 
-        navigate("/home");
+      //   const hashedPassword = MD5(password).toString();
+      //   const response = await fetch(
+      //     `${API_URL}/users/login/${email}/${hashedPassword}`,
+      //     {
+      //       method: "GET",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //     }
+      //   );
 
-    //   const hashedPassword = MD5(password).toString();
-    //   const response = await fetch(
-    //     `${API_URL}/users/login/${email}/${hashedPassword}`,
-    //     {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-
-    //   const result = await response.json();
-    //   if (response.ok && result.length > 0) {
-    //     const user = result[0].userid;
-    //     const role = result[0].role;
-    //     const username = result[0].username;
-    //     if (result[0].status === "active") {
-    //       localStorage.setItem("adminId", user);
-    //       localStorage.setItem("role", role);
-    //       localStorage.setItem("userDetails", JSON.stringify(result[0]));
-    //       localStorage.setItem("userName", username);
-    //       navigate(role === "Human Resources" ? "/HrHome" : "/Dashboard");
-    //     }
-    //   } else {
-    //     const errorMessage =
-    //       result.message || "Invalid credentials or user not found.";
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Login Failed",
-    //       text: errorMessage,
-    //     });
-    //     console.error("Login error:", errorMessage); // Log error to console
-    //   }
+      //   const result = await response.json();
+      //   if (response.ok && result.length > 0) {
+      //     const user = result[0].userid;
+      //     const role = result[0].role;
+      //     const username = result[0].username;
+      //     if (result[0].status === "active") {
+      //       localStorage.setItem("adminId", user);
+      //       localStorage.setItem("role", role);
+      //       localStorage.setItem("userDetails", JSON.stringify(result[0]));
+      //       localStorage.setItem("userName", username);
+      //       navigate(role === "Human Resources" ? "/HrHome" : "/Dashboard");
+      //     }
+      //   } else {
+      //     const errorMessage =
+      //       result.message || "Invalid credentials or user not found.";
+      //     Swal.fire({
+      //       icon: "error",
+      //       title: "Login Failed",
+      //       text: errorMessage,
+      //     });
+      //     console.error("Login error:", errorMessage); // Log error to console
+      //   }
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -110,17 +109,28 @@ const SignUpOne = () => {
             <p style={{ color: "#6b7280", fontSize: "14px" }}>
               Please create your account
             </p>
-            <p style={{ color: "#bea7a7ff", fontSize: "17px", fontWeight: "bold", marginTop: "6px" }}>
+            <p
+              style={{
+                color: "#bea7a7ff",
+                fontSize: "17px",
+                fontWeight: "bold",
+                marginTop: "6px",
+              }}
+            >
               Page 1 of 2
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "13px" }}
+          >
             {/* reg_number */}
             <div>
               <input
-                type=""text
+                type=""
+                text
                 value={reg_number}
                 onChange={(e) => setReg_number(e.target.value)}
                 required
@@ -173,41 +183,12 @@ const SignUpOne = () => {
 
             {/* surname */}
             <div>
-  
               <input
                 type="text"
                 value={surname}
                 onChange={(e) => setSurname(e.target.value)}
                 required
                 placeholder="Enter your surname"
-                style={{
-                  width: "100%",
-                  padding: "12px 16px",
-                  borderRadius: "8px",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#ffc000";
-                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#d1d5db";
-                  e.target.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/*gender */}
-            <div>
-              {/* i need to use radio buttons here for male and female  */}
-              <input
-                type="text"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                required
-                placeholder="Enter your gender"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -236,9 +217,10 @@ const SignUpOne = () => {
                   color: "#424344ff",
                   display: "block",
                   marginBottom: "2px",
-                  marginLeft: "3px"
+                  marginLeft: "3px",
                 }}
-              >Date of Birth:
+              >
+                Date of Birth:
               </label>
               <input
                 type="date"
@@ -265,15 +247,93 @@ const SignUpOne = () => {
               />
             </div>
 
+            {/*gender */}
+            <div>
+              {/* i need to use radio buttons here for male and female  */}
+              <label
+                style={{
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                  color: "#424344ff",
+                  display: "block",
+                  marginBottom: "2px",
+                  marginLeft: "3px",
+                }}
+              >
+                Gender:
+              </label>
+
+              <input
+                type="radio"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
+                name="gender"
+                style={{
+                                    marginTop: 5,
+
+                  // width: "40%",
+                  padding: "16px",
+                  borderRadius: "8px",
+                  border: "1px solid #d1d5db",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#ffc000";
+                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db";
+                  e.target.style.boxShadow = "none";
+                }}
+              /><label       style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  color: "#424344ff",
+                  marginBottom: "2px",
+                  marginLeft: "3px",
+                  paddingBottom: 4,
+                }}>Male</label>
+
+              <input
+                type="radio"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
+                name="gender"
+                style={{
+                  // width: "40%",
+                  padding: "16px",
+                  marginTop: 5,
+                  borderRadius: "8px",
+                  border: "1px solid #d1d5db",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#ffc000";
+                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db";
+                  e.target.style.boxShadow = "none";
+                }}
+              /><label       style={{
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                  color: "#424344ff",
+                  
+                  marginBottom: "2px",
+                  marginLeft: "3px",
+                }}>Female</label>
+            </div>
+
             {/*campus*/}
             <div>
-              {/* here also i should use a select item */}
-              <input
-                type="text"
+              <select
                 value={campus}
                 onChange={(e) => setCampus(e.target.value)}
-                required
-                placeholder="Select your campus"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -290,7 +350,12 @@ const SignUpOne = () => {
                   e.target.style.borderColor = "#d1d5db";
                   e.target.style.boxShadow = "none";
                 }}
-              />
+              >
+                <option value="">Select Campus</option>
+                <option value="fse">FSE Campus</option>
+                <option value="town">Town Campus</option>
+                <option value="main">Main Campus</option>
+              </select>
             </div>
 
             {/* Submit Button */}
@@ -344,7 +409,13 @@ const SignUpOne = () => {
           </form>
 
           {/* Divider */}
-          <div style={{ margin: "24px 0", position: "relative", textAlign: "center" }}>
+          <div
+            style={{
+              margin: "24px 0",
+              position: "relative",
+              textAlign: "center",
+            }}
+          >
             <div
               style={{
                 borderTop: "1px solid #d1d5db",
