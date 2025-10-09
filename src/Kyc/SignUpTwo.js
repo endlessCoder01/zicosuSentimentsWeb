@@ -5,6 +5,10 @@ import Swal from "sweetalert2";
 const SignUpTwo = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm_password, setConfirm_Password] = useState("");
+  const [residential_location, setResidential_location] = useState()
+  const [profileImage, setProfileImage] = useState();
+  const [phone, setPhone] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -113,13 +117,13 @@ const SignUpTwo = () => {
 
         
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-
             {/*pp*/}
             <div>
+                {/* here we need something more user appealing */}
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="file"
+                value={profileImage}
+                onChange={(e) => setProfileImage(e.target.value)}
                 required
                 placeholder="Enter your pp"
                 style={{
@@ -145,9 +149,9 @@ const SignUpTwo = () => {
             <div>
   
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={residential_location}
+                onChange={(e) => setResidential_location(e.target.value)}
                 required
                 placeholder="Enter your Address"
                 style={{
@@ -172,9 +176,9 @@ const SignUpTwo = () => {
             {/*contact */}
             <div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
                 placeholder="Enter your phone number"
                 style={{
@@ -226,9 +230,9 @@ const SignUpTwo = () => {
             {/*password*/}
             <div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Enter your password"
                 style={{
@@ -249,12 +253,13 @@ const SignUpTwo = () => {
                 }}
               />
             </div>
+
             {/*password*/}
             <div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="password"
+                value={confirm_password}
+                onChange={(e) => setConfirm_Password(e.target.value)}
                 required
                 placeholder="Confirm your password"
                 style={{
