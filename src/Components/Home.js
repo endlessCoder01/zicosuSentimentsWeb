@@ -3,6 +3,7 @@ import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
 import Navbar from "./Navbar";
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -19,9 +20,11 @@ const Home = () => {
           <p className="primary-text">
            inspiring motto wat wat
           </p>
+         <Link to="/signup/two">
           <button className="secondary-button">
             Sign Up <FiArrowRight />{" "}
           </button>
+        </Link>
         </div>
         <div className="home-image-section">
           <img src={BannerImage} alt="" style={{borderRadius: "50%"}}/>

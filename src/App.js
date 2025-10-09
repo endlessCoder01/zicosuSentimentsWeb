@@ -13,6 +13,8 @@ import SentimentsPage from "./Components/Sentiments";
 import ContactUs from "./Components/ContactUs";
 import AboutUs from "./Components/AboutUs";
 import AuthenticatedLayout from "./layouts/authenticatedLayout";
+import SignUpOne from "./Kyc/SignUp";
+import SignUpTwo from "./Kyc/SignUpTwo";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,8 +45,9 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Landing />} />
-              {/* <Route path="/login" element={<Login />}/> */}
               <Route path="/contact" element={<ContactUs />} />
+              <Route path="/signup/one" element={<SignUpOne />} />
+              <Route path="/signup/two" element={<SignUpTwo />} />
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </>
