@@ -95,7 +95,7 @@ const SignUpOne = () => {
           }}
         >
           {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: "24px" }}>
+          <div style={{ textAlign: "center", marginBottom: "16px" }}>
             <h1
               style={{
                 fontSize: "28px",
@@ -249,84 +249,70 @@ const SignUpOne = () => {
 
             {/*gender */}
             <div>
-              {/* i need to use radio buttons here for male and female  */}
-              <label
+              {/* <label
                 style={{
                   fontSize: "11px",
                   fontWeight: "bold",
                   color: "#424344ff",
                   display: "block",
-                  marginBottom: "2px",
+                  marginBottom: "4px",
                   marginLeft: "3px",
                 }}
               >
                 Gender:
-              </label>
+              </label> */}
 
-              <input
-                type="radio"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                required
-                name="gender"
+              <div
                 style={{
-                                    marginTop: 5,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  textAlign: "center",
+                  marginTop: "5px",
+                }}
+              >
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    color: "#424344ff",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    value="Male"
+                    checked={gender === "Male"}
+                    onChange={(e) => setGender(e.target.value)}
+                    name="gender"
+                    required
+                  />
+                  Male
+                </label>
 
-                  // width: "40%",
-                  padding: "16px",
-                  borderRadius: "8px",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#ffc000";
-                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#d1d5db";
-                  e.target.style.boxShadow = "none";
-                }}
-              /><label       style={{
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  color: "#424344ff",
-                  marginBottom: "2px",
-                  marginLeft: "3px",
-                  paddingBottom: 4,
-                }}>Male</label>
-
-              <input
-                type="radio"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                required
-                name="gender"
-                style={{
-                  // width: "40%",
-                  padding: "16px",
-                  marginTop: 5,
-                  borderRadius: "8px",
-                  border: "1px solid #d1d5db",
-                  outline: "none",
-                  transition: "all 0.2s ease",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#ffc000";
-                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#d1d5db";
-                  e.target.style.boxShadow = "none";
-                }}
-              /><label       style={{
-                  fontSize: "11px",
-                  fontWeight: "bold",
-                  color: "#424344ff",
-                  
-                  marginBottom: "2px",
-                  marginLeft: "3px",
-                }}>Female</label>
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    color: "#424344ff",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    value="Female"
+                    checked={gender === "Female"}
+                    onChange={(e) => setGender(e.target.value)}
+                    name="gender"
+                    required
+                  />
+                  Female
+                </label>
+              </div>
             </div>
 
             {/*campus*/}
@@ -411,7 +397,7 @@ const SignUpOne = () => {
           {/* Divider */}
           <div
             style={{
-              margin: "24px 0",
+              margin: "18px 0",
               position: "relative",
               textAlign: "center",
             }}
@@ -460,7 +446,7 @@ const SignUpOne = () => {
 
         <div
           style={{
-            marginTop: "24px",
+            marginTop: "5px",
             textAlign: "center",
             fontSize: "13px",
             color: "#e5e7eb",
