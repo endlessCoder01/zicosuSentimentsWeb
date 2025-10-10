@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { URL } from "../services/config";
 
 const SignUpTwo = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirm_Password] = useState("");
   const [residential_location, setResidential_location] = useState();
@@ -16,54 +18,60 @@ const SignUpTwo = () => {
   const signUp = async () => {
     setLoading(true);
     try {
-      Swal.fire({
-        icon: "success",
-        title: "Welcome Back",
-        text: "Welcome",
+      const lastPage = localStorage.getItem("user");
+      const pageOne = await JSON.parse(lastPage);
+
+      const new_User = {
+        name: pageOne.name,
+        surname: pageOne.surname,
+        username: username,
+        gender: pageOne.gender,
+        dob: pageOne.dob,
+        phone: phone,
+        campus: pageOne.campus,
+        residential_location: residential_location,
+        email: email,
+        reg_number: pageOne.reg_number,
+        password: password,
+      };
+
+    //   console.log("new user", new_User)
+
+      const response = await fetch(`${URL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(new_User),
       });
 
-      navigate("/home");
+      const result = await response.json();
+      if (response.ok) {
+        // console.log("response", result);
+        Swal.fire({
+          icon: "success",
+          title: "Signed up Successfully",
+          text: "Congratulations you have successfully joined our ZICOSU platform",
+          confirmButtonColor: "green"
+        });
 
-      //   const hashedPassword = MD5(password).toString();
-      //   const response = await fetch(
-      //     `${API_URL}/users/login/${email}/${hashedPassword}`,
-      //     {
-      //       method: "GET",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     }
-      //   );
-
-      //   const result = await response.json();
-      //   if (response.ok && result.length > 0) {
-      //     const user = result[0].userid;
-      //     const role = result[0].role;
-      //     const username = result[0].username;
-      //     if (result[0].status === "active") {
-      //       localStorage.setItem("adminId", user);
-      //       localStorage.setItem("role", role);
-      //       localStorage.setItem("userDetails", JSON.stringify(result[0]));
-      //       localStorage.setItem("userName", username);
-      //       navigate(role === "Human Resources" ? "/HrHome" : "/Dashboard");
-      //     }
-      //   } else {
-      //     const errorMessage =
-      //       result.message || "Invalid credentials or user not found.";
-      //     Swal.fire({
-      //       icon: "error",
-      //       title: "Login Failed",
-      //       text: errorMessage,
-      //     });
-      //     console.error("Login error:", errorMessage);
-      //   }
+        navigate("/home");
+      } else {
+        const errorMessage = result.error || "check internet connectivity";
+        Swal.fire({
+          icon: "error",
+          title: "Signing Up Failed",
+          text: errorMessage,
+        });
+        // console.error("SignUp error:", errorMessage);
+      }
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "An error occurred during login. Please try again.",
+        text: "An error occurred during SignUp. Please check your network and try again.",
       });
-      console.error("Error fetching user details:", error);
     } finally {
       setLoading(false);
     }
@@ -203,14 +211,43 @@ const SignUpTwo = () => {
               />
             </div>
 
-            {/* home address*/}
+            {/* current address*/}
             <div>
-              <input
-                type="text"
+              <select
                 value={residential_location}
                 onChange={(e) => setResidential_location(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  border: "1px solid #d1d5db",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#ffc000";
+                  e.target.style.boxShadow = "0 0 0 2px #ffc00055";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                <option value="">Select Your Current Residential Area</option>
+                <option value="main">Main Campus Residential Area</option>
+                <option value="new complex">New Complex Residential Area </option>
+                <option value="off campus">Off Campus</option>
+              </select>
+            </div>
+
+            {/*contact */}
+            <div>
+              <input
+                type="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
-                placeholder="Enter your Address"
+                placeholder="Enter your phone number"
                 style={{
                   width: "100%",
                   padding: "12px 16px",
@@ -230,14 +267,14 @@ const SignUpTwo = () => {
               />
             </div>
 
-            {/*contact */}
+            {/*username*/}
             <div>
               <input
-                type="phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
-                placeholder="Enter your phone number"
+                placeholder="Enter your Username"
                 style={{
                   width: "100%",
                   padding: "12px 16px",

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SignUpOne = () => {
-  const [email, setEmail] = useState("");
   const [reg_number, setReg_number] = useState();
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
@@ -13,50 +12,33 @@ const SignUpOne = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const fetchUserDetails = async () => {
+  const saveLocaldetails = async () => {
     setLoading(true);
     try {
+      const user = {
+        reg_number: reg_number,
+        name: name,
+        surname: name,
+        dob: dob,
+        gender: gender,
+        campus: campus,
+      };
+
+      // console.log("user", user);
+      localStorage.setItem("user", JSON.stringify(user));
+
       Swal.fire({
+        toast: true,
+        position: "top-end",
         icon: "success",
-        title: "Welcome Back",
-        text: "Welcome",
+        title: "One more step",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        color: "rgba(9, 71, 28, 0.75)"
       });
 
       navigate("/signup/two");
-
-      //   const hashedPassword = MD5(password).toString();
-      //   const response = await fetch(
-      //     `${API_URL}/users/login/${email}/${hashedPassword}`,
-      //     {
-      //       method: "GET",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     }
-      //   );
-
-      //   const result = await response.json();
-      //   if (response.ok && result.length > 0) {
-      //     const user = result[0].userid;
-      //     const role = result[0].role;
-      //     const username = result[0].username;
-      //     if (result[0].status === "active") {
-      //       localStorage.setItem("adminId", user);
-      //       localStorage.setItem("role", role);
-      //       localStorage.setItem("userDetails", JSON.stringify(result[0]));
-      //       localStorage.setItem("userName", username);
-      //       navigate(role === "Human Resources" ? "/HrHome" : "/Dashboard");
-      //     }
-      //   } else {
-      //     const errorMessage =
-      //       result.message || "Invalid credentials or user not found.";
-      //     Swal.fire({
-      //       icon: "error",
-      //       title: "Login Failed",
-      //       text: errorMessage,
-      //     });
-      //     console.error("Login error:", errorMessage); // Log error to console
-      //   }
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -71,8 +53,12 @@ const SignUpOne = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchUserDetails();
+    saveLocaldetails();
   };
+
+  const signIn = () => {
+    navigate('/login')
+  }
 
   return (
     <div
@@ -425,7 +411,7 @@ const SignUpOne = () => {
           </div>
 
           <div style={{ textAlign: "center" }}>
-            <button
+            <button 
               type="button"
               style={{
                 color: "#002966",
@@ -438,6 +424,7 @@ const SignUpOne = () => {
               }}
               onMouseEnter={(e) => (e.target.style.color = "#ee5237ff")}
               onMouseLeave={(e) => (e.target.style.color = "#ec1212ff")}
+              onClick={signIn}
             >
               Sign In
             </button>
