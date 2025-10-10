@@ -18,7 +18,7 @@ const Home = () => {
             Welcome to ZICOSU
           </h1>
           <p className="primary-text">
-           inspiring motto wat wat
+           Education Is Our Birthright
           </p>
          <Link to="/signup/one">
           <button className="secondary-button">

@@ -14,16 +14,14 @@ const About = () => {
       </div>
       <div className="about-section-text-container">
         <p className="primary-subheading">About</p>
-        <h1 className="primary-heading">
-          Zicosu as we know it
-        </h1>
+        <h1 className="primary-heading">zicosu as you know it</h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          Is a passionate team dedicated to empowering communities through
+          education, innovation, and technology.
         </p>
         <p className="primary-text">
-          Non tincidunt magna non et elit. Dolor turpis molestie dui magnis
-          facilisis at fringilla quam.
+          Our platform provides a space for people to share sentiments,
+          knowledge, connect, and grow together.
         </p>
         <div className="about-buttons-container">
           <button className="secondary-button">Learn More</button>
