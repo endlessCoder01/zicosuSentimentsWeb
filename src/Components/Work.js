@@ -12,12 +12,27 @@ const Work = () => {
     },
     {
       image: image2,
-      title: "Clean Up Campaign",
+      title: "Registration Negotiations",
       text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
     },
     {
       image: image3,
       title: "SEED",
+      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+    },
+    {
+      image: image3,
+      title: "Successful Mass Recruitment",
+      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+    },
+    {
+      image: image3,
+      title: "Provincial Exchange Program",
+      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+    },
+    {
+      image: image3,
+      title: "Breast Cancer Awareness",
       text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
     },
   ];
@@ -27,8 +42,7 @@ const Work = () => {
         <p className="primary-subheading">Achievements</p>
         <h1 className="primary-heading">What we have achieved</h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          ZICOSU BUSE chapter has attained multiple milestones that include the development of the first ever ZICOSU website, the launch of Student Extensive Engagement Drive (SEED) and the successful Fees and registration negotiations amongst others.
         </p>
       </div>
       <div className="work-section-bottom">

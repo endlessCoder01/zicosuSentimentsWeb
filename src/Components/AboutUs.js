@@ -11,30 +11,77 @@ const AboutUs = () => {
     {
       title: "Our Mission",
       content:
-        "Our mission is to make education and opportunities accessible to everyone, regardless of background. We strive to create a supportive environment that inspires collaboration and continuous learning.",
+      "We aim to develop and maintain meaningful imaginative, reciprocal and sustainable relationships with our institutions and the government in and out of the classroom in a bid to foster student engagements, enable a free and independent student voice, contribute torwards educational journey whilst in institutions and promote success during studies and beyond."
     },
     {
       title: "Our Vision",
       content:
-        "We envision a world where every individual has equal access to knowledge and tools to succeed, fostering a brighter and more inclusive future for all.",
+"Forever to remain the devoted revolutionary students' voice to the enrichment and enhancement of the educational processes and experience and welfare of students"
     },
   ];
 
   const team = [
-    {
-      name: "Jane Doe",
-      role: "Chief Executive Officer (CEO)",
-      image: "https://via.placeholder.com/150", // replace with your real image path
+        {
+      name: "Nyasha Mutande",
+      role: "Chairman",
+      image: "https://via.placeholder.com/150", 
+    },
+      {
+      name: "Trevor Ncube",
+      role: "Secretary General (SG)",
+      image: "https://via.placeholder.com/150", 
     },
     {
-      name: "Mark Smith",
-      role: "Secretary",
-      image: "https://via.placeholder.com/150", // replace with your real image path
+      name: "Enerst Ligoya",
+      role: "Secretary for Recruitment and Ideology (SRI)",
+      image: "https://via.placeholder.com/150", 
+    },
+       {
+      name: "Sean Zihwi",
+      role: "Secretary for Information and Publicity",
+      image: "https://via.placeholder.com/150", 
+    },
+        {
+      name: "Munashe Mudoti",
+      role: "Cyber Security Director",
+      image: "https://via.placeholder.com/150", 
     },
     {
-      name: "Alice Johnson",
-      role: "Founder",
-      image: "https://via.placeholder.com/150", // replace with your real image path
+      name: "Tsitsi Tauya",
+      role: "Secretary for Gender and Health (SGH)",
+      image: "https://via.placeholder.com/150", 
+    },
+ 
+    {
+      name: "Rutendo",
+      role: "Treasurer General (SGH)",
+      image: "https://via.placeholder.com/150", 
+    },
+    {
+      name: "Delight",
+      role: "Secretary for Business and Ecconomic Affairs",
+      image: "https://via.placeholder.com/150", 
+    },
+    {
+      name: "Thelma",
+      role: "Secretary for External Affairs",
+      image: "https://via.placeholder.com/150", 
+    },
+
+    {
+      name: "Tawana",
+      role: "Secretary for Social Welfare",
+      image: "https://via.placeholder.com/150", 
+    },
+    {
+      name: "Naboth Nemaire",
+      role: "Secreatary for Education",
+      image: "https://via.placeholder.com/150", 
+    },
+    {
+      name: "Hope Kashitiku",
+      role: "Secreatary for Welfare of the Differently Abled Persons",
+      image: "https://via.placeholder.com/150", 
     },
   ];
 

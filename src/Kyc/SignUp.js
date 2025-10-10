@@ -22,7 +22,7 @@ const SignUpOne = () => {
         text: "Welcome",
       });
 
-      navigate("/home");
+      navigate("/signup/two");
 
       //   const hashedPassword = MD5(password).toString();
       //   const response = await fetch(

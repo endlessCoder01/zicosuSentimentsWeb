@@ -20,7 +20,7 @@ const Home = () => {
           <p className="primary-text">
            inspiring motto wat wat
           </p>
-         <Link to="/signup/two">
+         <Link to="/signup/one">
           <button className="secondary-button">
             Sign Up <FiArrowRight />{" "}
           </button>
