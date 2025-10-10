@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2"; // Import SweetAlert
+import Swal from "sweetalert2";
+import { URL } from "../services/config";
 
-const Login = ({onLogin}) => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -11,56 +12,51 @@ const Login = ({onLogin}) => {
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
-        onLogin();
+      const response = await fetch(`${URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log("login", result);
+        if (result.token.userDetails.user.status === "active") {
+          onLogin();
 
           Swal.fire({
-          icon: "success",
-          title: "Welcome Back",
-          text: "Welcome",
+            toast: true,
+            position: "top-end",
+            icon: "success",
+            title: "Login successful",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: `this account is ${result.token.userDetails.user.status}`,
+          });
+        }
+      } else {
+        const errorMessage =
+          result.response || "Invalid credentials or user not found.";
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: errorMessage,
         });
-
-        navigate("/home");
-
-    //   const hashedPassword = MD5(password).toString();
-    //   const response = await fetch(
-    //     `${API_URL}/users/login/${email}/${hashedPassword}`,
-    //     {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-
-    //   const result = await response.json();
-    //   if (response.ok && result.length > 0) {
-    //     const user = result[0].userid;
-    //     const role = result[0].role;
-    //     const username = result[0].username;
-    //     if (result[0].status === "active") {
-    //       localStorage.setItem("adminId", user);
-    //       localStorage.setItem("role", role);
-    //       localStorage.setItem("userDetails", JSON.stringify(result[0]));
-    //       localStorage.setItem("userName", username);
-    //       navigate(role === "Human Resources" ? "/HrHome" : "/Dashboard");
-    //     }
-    //   } else {
-    //     const errorMessage =
-    //       result.message || "Invalid credentials or user not found.";
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Login Failed",
-    //       text: errorMessage,
-    //     });
-    //     console.error("Login error:", errorMessage); // Log error to console
-    //   }
+      }
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "An error occurred during login. Please try again.",
       });
-      console.error("Error fetching user details:", error); // Log error to console
     } finally {
       setLoading(false);
     }
@@ -79,7 +75,6 @@ const Login = ({onLogin}) => {
         alignItems: "center",
         justifyContent: "center",
         padding: "16px",
-        // background: "linear-gradient(to bottom right, #002966, #001a4d)",
       }}
     >
       <div style={{ width: "100%", maxWidth: "400px" }}>
@@ -108,8 +103,10 @@ const Login = ({onLogin}) => {
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
             {/* Email */}
             <div>
               <label
@@ -237,7 +234,13 @@ const Login = ({onLogin}) => {
           </form>
 
           {/* Divider */}
-          <div style={{ margin: "24px 0", position: "relative", textAlign: "center" }}>
+          <div
+            style={{
+              margin: "24px 0",
+              position: "relative",
+              textAlign: "center",
+            }}
+          >
             <div
               style={{
                 borderTop: "1px solid #d1d5db",
@@ -294,7 +297,6 @@ const Login = ({onLogin}) => {
         </div>
       </div>
 
-      {/* Keyframes for loader */}
       <style>
         {`
           @keyframes spin {
