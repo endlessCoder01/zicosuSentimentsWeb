@@ -22,9 +22,10 @@ const Login = ({ onLogin }) => {
 
       const result = await response.json();
       if (response.ok) {
-        console.log("login", result);
+        // console.log("login", result);
         if (result.token.userDetails.user.status === "active") {
           onLogin();
+          localStorage.setItem('activeUser', JSON.stringify(result))
 
           Swal.fire({
             toast: true,
