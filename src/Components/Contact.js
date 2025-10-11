@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { URL } from "../services/config";
+import { APIURL } from "../services/config";
 
 const Contact = () => {
   const [email, setEmail] = useState();
@@ -13,7 +13,7 @@ const Contact = () => {
   const submitEmail = async () => {
     // console.log("captured email", email);
     try {
-      const response = await fetch(`${URL}/email/not_signed`, {
+      const response = await fetch(`${APIURL}/email/not_signed`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

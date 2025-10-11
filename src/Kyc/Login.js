@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { URL } from "../services/config";
+import { APIURL } from "../services/config";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${URL}/auth/login`, {
+      const response = await fetch(`${APIURL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

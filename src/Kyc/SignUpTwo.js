@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { URL } from "../services/config";
+import { APIURL } from "../services/config";
 
 const SignUpTwo = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +20,9 @@ const SignUpTwo = () => {
     try {
       const lastPage = localStorage.getItem("user");
       const pageOne = await JSON.parse(lastPage);
+      const image = await handleImageUpload(profileImage);
+
+      console.log("imageUri:", image);
 
       const new_User = {
         name: pageOne.name,
@@ -33,11 +36,12 @@ const SignUpTwo = () => {
         email: email,
         reg_number: pageOne.reg_number,
         password: password,
+        profilePic: image,
       };
 
     //   console.log("new user", new_User)
 
-      const response = await fetch(`${URL}/auth/register`, {
+      const response = await fetch(`${APIURL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,6 +71,7 @@ const SignUpTwo = () => {
         // console.error("SignUp error:", errorMessage);
       }
     } catch (error) {
+      
       Swal.fire({
         icon: "error",
         title: "Error",
@@ -80,6 +85,34 @@ const SignUpTwo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp();
+  };
+    const handleImageUpload = async (imageUri) => {
+    // console.log("Image", imageUri);
+    const formData = new FormData();
+    const fileName = imageUri.split("/").pop();
+    const type = `image/${fileName.split(".").pop()}`;
+
+    formData.append("image", {
+      uri: imageUri,
+      name: fileName,
+      type: type,
+    });
+
+    try {
+      const response = await fetch(`${APIURL}/uploads`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const data = await response.json();
+      return `${data.path}`; // Return the full URL
+    } catch (error) {
+      console.error("Upload error:", error);
+      throw new Error("Failed to upload image");
+    }
   };
 
   return (
