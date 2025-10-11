@@ -1,5 +1,16 @@
 import React from "react";
-import About from "./About";
+import Trevor from "../Assets/theTeam/Trevor.png";
+import Rutendo from "../Assets/theTeam/Rutendo.png";
+import Hope from "../Assets/theTeam/Hope.png";
+import Naboth from "../Assets/theTeam/Naboth.png";
+import Tsitsi from "../Assets/theTeam/Tsitsi.png";
+import Sean from "../Assets/theTeam/Sean.png";
+import Delight from "../Assets/theTeam/Delight.png";
+import Tawana from "../Assets/theTeam/Tawana.png";
+import Ernest from "../Assets/theTeam/Ernest.png"
+import Nyasha from "../Assets/theTeam/Nyasha.png"
+import Thelma from "../Assets/theTeam/Thelma.png"
+import Munashe from "../Assets/theTeam/Munashe.png"
 
 const AboutUs = () => {
   const sections = [
@@ -11,78 +22,28 @@ const AboutUs = () => {
     {
       title: "Our Mission",
       content:
-      "We aim to develop and maintain meaningful imaginative, reciprocal and sustainable relationships with our institutions and the government in and out of the classroom in a bid to foster student engagements, enable a free and independent student voice, contribute torwards educational journey whilst in institutions and promote success during studies and beyond."
+        "We aim to develop and maintain meaningful imaginative, reciprocal and sustainable relationships with our institutions and the government in and out of the classroom in a bid to foster student engagements, enable a free and independent student voice, contribute torwards educational journey whilst in institutions and promote success during studies and beyond.",
     },
     {
       title: "Our Vision",
       content:
-"Forever to remain the devoted revolutionary students' voice to the enrichment and enhancement of the educational processes and experience and welfare of students"
+        "Forever to remain the devoted revolutionary students' voice to the enrichment and enhancement of the educational processes and experience and welfare of students",
     },
   ];
 
   const team = [
-        {
-      name: "Nyasha Mutande",
-      role: "Chairman",
-      image: "https://via.placeholder.com/150", 
-    },
-      {
-      name: "Trevor Ncube",
-      role: "Secretary General (SG)",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Enerst Ligoya",
-      role: "Secretary for Recruitment and Ideology (SRI)",
-      image: "https://via.placeholder.com/150", 
-    },
-       {
-      name: "Sean Zihwi",
-      role: "Secretary for Information and Publicity",
-      image: "https://via.placeholder.com/150", 
-    },
-        {
-      name: "Munashe Mudoti",
-      role: "Cyber Security Director",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Tsitsi Tauya",
-      role: "Secretary for Gender and Health (SGH)",
-      image: "https://via.placeholder.com/150", 
-    },
- 
-    {
-      name: "Rutendo",
-      role: "Treasurer General (SGH)",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Delight",
-      role: "Secretary for Business and Ecconomic Affairs",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Thelma",
-      role: "Secretary for External Affairs",
-      image: "https://via.placeholder.com/150", 
-    },
-
-    {
-      name: "Tawana",
-      role: "Secretary for Social Welfare",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Naboth Nemaire",
-      role: "Secreatary for Education",
-      image: "https://via.placeholder.com/150", 
-    },
-    {
-      name: "Hope Kashitiku",
-      role: "Secreatary for Welfare of the Differently Abled Persons",
-      image: "https://via.placeholder.com/150", 
-    },
+    { name: "Nyasha Mutande", role: "Chairman", image: Nyasha },
+    { name: "Trevor Ncube", role: "Secretary General (SG)", image: Trevor },
+    { name: "Enerst Ligoya", role: "Secretary for Recruitment and Ideology (SRI)", image: Ernest },
+    { name: "Sean Zihwi", role: "Secretary for Information and Publicity", image: Sean },
+    { name: "Munashe Mudoti", role: "Cyber Security Director", image: Munashe },
+    { name: "Tsitsi Tauya", role: "Secretary for Gender and Health (SGH)", image: Tsitsi },
+    { name: "Rutendo Mahachi", role: "Treasurer General (TG)", image: Rutendo },
+    { name: "Delight Kativhu", role: "Secretary for Business and Ecconomic Affairs", image: Delight },
+    { name: "Thelma", role: "Secretary for External Affairs", image: Thelma },
+    { name: "Tawana Mangani", role: "Secretary for Social Welfare", image: Tawana },
+    { name: "Naboth Nemaire", role: "Secreatary for Education", image: Naboth },
+    { name: "Hope Kashitiku", role: "Secreatary for Welfare of the Differently Abled Persons", image: Hope },
   ];
 
   return (
@@ -110,7 +71,13 @@ const AboutUs = () => {
             <img
               src={member.image}
               alt={member.name}
-              style={styles.teamImage}
+              style={{
+                ...styles.teamImage,
+                imageRendering: "auto",        // ensures smooth scaling
+                transform: "translateZ(0)",     // improves rendering on high DPI
+                backfaceVisibility: "hidden",
+              }}
+              loading="lazy" // optional: improves performance
             />
             <h3 style={styles.teamName}>{member.name}</h3>
             <p style={styles.teamRole}>{member.role}</p>
@@ -121,7 +88,7 @@ const AboutUs = () => {
   );
 };
 
-// Inline styles
+// Inline styles (unchanged, only teamImage modified for sharpness)
 const styles = {
   page: {
     fontFamily: "Arial, sans-serif",
@@ -182,8 +149,8 @@ const styles = {
     textAlign: "center",
   },
   teamImage: {
-    width: "100px",
-    height: "100px",
+    width: "120px",           // slightly larger for clarity
+    height: "120px",          // matches original shape
     borderRadius: "50%",
     objectFit: "cover",
     marginBottom: "15px",
