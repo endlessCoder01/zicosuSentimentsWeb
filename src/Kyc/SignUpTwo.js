@@ -39,7 +39,7 @@ const SignUpTwo = () => {
         profilePic: image,
       };
 
-    //   console.log("new user", new_User)
+        console.log("new user", new_User)
 
       const response = await fetch(`${APIURL}/auth/register`, {
         method: "POST",
@@ -57,7 +57,7 @@ const SignUpTwo = () => {
           icon: "success",
           title: "Signed up Successfully",
           text: "Congratulations you have successfully joined our ZICOSU platform",
-          confirmButtonColor: "green"
+          confirmButtonColor: "green",
         });
 
         navigate("/home");
@@ -71,7 +71,6 @@ const SignUpTwo = () => {
         // console.error("SignUp error:", errorMessage);
       }
     } catch (error) {
-      
       Swal.fire({
         icon: "error",
         title: "Error",
@@ -86,25 +85,31 @@ const SignUpTwo = () => {
     e.preventDefault();
     signUp();
   };
-    const handleImageUpload = async (imageUri) => {
-    // console.log("Image", imageUri);
-    const formData = new FormData();
-    const fileName = imageUri.split("/").pop();
-    const type = `image/${fileName.split(".").pop()}`;
 
-    formData.append("image", {
-      uri: imageUri,
-      name: fileName,
-      type: type,
-    });
+
+  const handleImageUpload = async (imageUri) => {
+    console.log("Image", imageUri);
+
+    // const formData = new FormData();
+    // const fileName = imageUri.split("/").pop();
+    // const type = `image/${fileName.split(".").pop()}`;
+
+    // formData.append("image", {
+    //   uri: imageUri,
+    //   name: fileName,
+    //   type: type,
+    // });
+
+  const formData = new FormData();
+  formData.append("image", imageUri); 
 
     try {
       const response = await fetch(`${APIURL}/uploads`, {
         method: "POST",
         body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        // headers: {
+        //   "Content-Type": "multipart/form-data",
+        // },
       });
 
       const data = await response.json();
@@ -268,7 +273,9 @@ const SignUpTwo = () => {
               >
                 <option value="">Select Your Current Residential Area</option>
                 <option value="main">Main Campus Residential Area</option>
-                <option value="new complex">New Complex Residential Area </option>
+                <option value="new complex">
+                  New Complex Residential Area{" "}
+                </option>
                 <option value="off campus">Off Campus</option>
               </select>
             </div>

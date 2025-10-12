@@ -15,6 +15,7 @@ import AboutUs from "./Components/AboutUs";
 import AuthenticatedLayout from "./layouts/authenticatedLayout";
 import SignUpOne from "./Kyc/SignUp";
 import SignUpTwo from "./Kyc/SignUpTwo";
+import ProfilePage from "./Components/Profile";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -38,6 +39,7 @@ function App() {
               <Route element={<AuthenticatedLayout />}>
                 <Route path="/home" element={<AuthenticatedLanding />} />
                 <Route path="/sentiments" element={<SentimentsPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/about" element={<AboutUs />} />
               </Route>
               <Route path="*" element={<Navigate to="/home" replace />} />

@@ -5,6 +5,7 @@ import {
   FaPhoneAlt,
   FaServicestack,
   FaBars,
+  FaUser,
   FaTimes,
   FaPowerOff,
 } from "react-icons/fa";
@@ -43,11 +44,11 @@ const AuthenticatedNav = () => {
               <FaServicestack className="icon" /> Send Sentiments
             </Link>
           </li>
-          {/* <li>
-            <Link to="/contact">
-              <FaPhoneAlt className="icon" /> Contact Us
+          <li>
+            <Link to="/profile">
+              <FaUser className="icon" /> Profile
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/about">
               <FaInfoCircle className="icon" /> About
