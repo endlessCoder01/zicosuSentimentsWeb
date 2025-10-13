@@ -33,7 +33,7 @@ const Login = ({ onLogin }) => {
             icon: "success",
             title: "Login successful",
             showConfirmButton: false,
-            timer: 2000,
+            timer: 2000, 
             timerProgressBar: true,
           });
         } else {

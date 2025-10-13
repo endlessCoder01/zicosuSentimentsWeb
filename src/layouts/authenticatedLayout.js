@@ -11,10 +11,6 @@ const AuthenticatedLayout = ({children}) => {
       {/* Main Content */}
       <main className="main-content">
        <Outlet/>
-       <footer style={{textAlign: "center",
-        padding: "10px",
-        backgroundColor: "#f1f1f1",
-        fontSize: "14px"}}>&copy;2025 ZICOSU. &nbsp; All rights reserved</footer>
       </main>
     </div>
   );
