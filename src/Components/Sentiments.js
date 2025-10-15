@@ -64,7 +64,7 @@ const SentimentsPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("res", res);
+      // console.log("res", res);
 
       if (!res.ok) throw new Error("Failed to fetch sentiments");
       const data = await res.json();

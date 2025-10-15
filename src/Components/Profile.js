@@ -1,18 +1,83 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import Userimage from "../Assets/theTeam/user.png"
 
 const ProfilePage = () => {
-  const [user, setUser] = useState({
-    name: "Munashe Mudoti",
-    email: "munashe@example.com",
-    phone: "+263 771 123 456",
-    location: "Harare, Zimbabwe",
-    bio: "Tech enthusiast • Full Stack Developer • Lifelong learner",
-    profilePic:
-      "https://i.pinimg.com/564x/85/62/eb/8562eb94d87780b24c81b2972e57cbd0.jpg", // demo image
+  const [user, setUser] = useState(null);
+  const [newData, setNewData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
+    bio: "",
+    profilePic: "",
   });
+  const API_URL = "http://localhost:5001/upload";
 
   const [isEditing, setIsEditing] = useState(false);
-  const [newData, setNewData] = useState(user);
+  const [token, setToken] = useState();
+
+  //   {
+  //   name: "Munashe Mudoti",
+  //   email: "munashe@example.com",
+  //   phone: "+263 771 123 456",
+  //   location: "Harare, Zimbabwe",
+  //   bio: "Tech enthusiast • Full Stack Developer • Lifelong learner",
+  //   profilePic:
+  //     "https://i.pinimg.com/564x/85/62/eb/8562eb94d87780b24c81b2972e57cbd0.jpg", // demo image
+  // }
+
+  useEffect(() => {
+    getUserLocal();
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      fetchProfilePic();
+    }
+
+    // const interval = setInterval(() => {
+    //  fetchProfilePic();
+    // }, 3000);
+
+    // return () => clearInterval(interval);
+  }, [token]);
+
+  const getUserLocal = async () => {
+    const data = localStorage.getItem("activeUser");
+    if (!data) return;
+    const user = JSON.parse(data);
+    console.log("hoyo", user.token.userDetails.user);
+    setToken(user.token.token);
+    setUser(user.token.userDetails.user);
+  };
+
+  const fetchProfilePic = async () => {
+    try {
+      const res = await fetch(`${API_URL}/${user.reg_number}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) throw new Error("Failed to fetch profilePic");
+      const data = await res.json();
+
+      console.log("profile", data);
+      const dum = { ...user, profilePic: data.file_url };
+      console.log("hdfsjk", dum);
+      setUser(dum);
+      setNewData(dum);
+    } catch (error) {
+      console.error("Error fetching pp:", error);
+      Swal.fire(
+        "Error",
+        "Could not load sentiments. Please try again.",
+        "error"
+      );
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +99,7 @@ const ProfilePage = () => {
     }
   };
 
-  // 🎨 Inline Styles
+  //Styles
   const styles = {
     container: {
       fontFamily: "'Segoe UI', sans-serif",
@@ -62,8 +127,7 @@ const ProfilePage = () => {
     },
     banner: {
       height: 120,
-      background:
-        "linear-gradient(90deg, #6B6F1D, #FCE023, #6B6F1D, #000000)",
+      background: "linear-gradient(90deg, #6B6F1D, #FCE023, #6B6F1D, #000000)",
       borderRadius: 20,
       marginBottom: -80,
       filter: "blur(0.5px)",
@@ -139,13 +203,32 @@ const ProfilePage = () => {
     },
   };
 
+  if (!user) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h2>Loading profile...</h2>
+      </div>
+    );
+  }
+
   return (
     <div style={styles.container}>
       <div style={styles.banner}></div>
 
       <div style={styles.card}>
         <div style={styles.profilePicContainer}>
-          <img src={newData.profilePic} alt="Profile" style={styles.profilePic} />
+          <img
+            src={
+              newData?.profilePic
+                ? `http://localhost:5001/${newData.profilePic.replace(
+                    /\\/g,
+                    "/"
+                  )}`
+                :  Userimage
+            }
+            alt="Profile"
+            style={styles.profilePic}
+          />
           <label htmlFor="profilePicUpload">
             <button style={styles.editPicButton}>✏️</button>
           </label>
@@ -224,10 +307,7 @@ const ProfilePage = () => {
             <p>
               <b>Location:</b> {user.location}
             </p>
-            <button
-              style={styles.button}
-              onClick={() => setIsEditing(true)}
-            >
+            <button style={styles.button} onClick={() => setIsEditing(true)}>
               ✏️ Edit Profile
             </button>
           </>
