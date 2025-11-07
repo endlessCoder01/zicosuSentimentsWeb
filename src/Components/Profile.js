@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import Userimage from "../Assets/theTeam/user.png"
+import Userimage from "../Assets/theTeam/user.png";
+import { FaPen } from "react-icons/fa";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -99,6 +100,18 @@ const ProfilePage = () => {
     }
   };
 
+  const Notify = () => {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "info",
+      title: "Coming Soon",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
+  };
+
   //Styles
   const styles = {
     container: {
@@ -150,7 +163,7 @@ const ProfilePage = () => {
       position: "absolute",
       bottom: 0,
       right: 0,
-      backgroundColor: "#6B6F1D",
+      backgroundColor: "#3d3d3dff",
       color: "white",
       border: "none",
       borderRadius: "50%",
@@ -189,7 +202,7 @@ const ProfilePage = () => {
       transition: "0.2s",
     },
     button: {
-      backgroundColor: "#6B6F1D",
+      backgroundColor: "#3f3f3fff",
       color: "white",
       padding: "12px 25px",
       border: "none",
@@ -224,13 +237,15 @@ const ProfilePage = () => {
                     /\\/g,
                     "/"
                   )}`
-                :  Userimage
+                : Userimage
             }
             alt="Profile"
             style={styles.profilePic}
           />
           <label htmlFor="profilePicUpload">
-            <button style={styles.editPicButton}>✏️</button>
+            <button style={styles.editPicButton} onClick={Notify}>
+              <FaPen />
+            </button>
           </label>
           <input
             type="file"
@@ -293,7 +308,7 @@ const ProfilePage = () => {
             </div>
 
             <button style={styles.button} onClick={handleSave}>
-              💾 Save Changes
+              Save Changes
             </button>
           </>
         ) : (
@@ -307,8 +322,11 @@ const ProfilePage = () => {
             <p>
               <b>Location:</b> {user.location}
             </p>
-            <button style={styles.button} onClick={() => setIsEditing(true)}>
-              ✏️ Edit Profile
+            <button
+              style={styles.button}
+              /*onClick={() => setIsEditing(false)}*/ onClick={Notify}
+            >
+              Edit Profile
             </button>
           </>
         )}

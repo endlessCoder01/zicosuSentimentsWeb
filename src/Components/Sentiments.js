@@ -34,23 +34,10 @@ const SentimentsPage = () => {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      author: "John Doe",
-      message: "Education is the key to success!",
+      author: "Advisor",
+      message: "Hey Buddie make a sentiment post it is fun!",
       avatar: "https://i.pravatar.cc/150?img=1",
-    },
-    {
-      id: 2,
-      author: "Alice",
-      message:
-        "Never give up on your dreams 🌟 Keep pushing forward no matter how hard things get.",
-      avatar: "https://i.pravatar.cc/150?img=2",
-    },
-    {
-      id: 3,
-      author: "Michael",
-      message: "The future belongs to those who prepare today 🚀",
-      avatar: "https://i.pravatar.cc/150?img=3",
-    },
+    }
   ]);
   const [newPost, setNewPost] = useState("");
   const [search, setSearch] = useState("");

@@ -1,39 +1,37 @@
 import React from "react";
-import image1 from "../Assets/bindura1.png";
-import image2 from "../Assets/buse2.png";
+import image1 from "../Assets/Projects/registrationNegotiations.jpg";
+import image2 from "../Assets/Projects/fees.jpg";
 import image3 from "../Assets/buse3.png";
+import image6 from "../Assets/Projects/Provincial exchange.jpg"
+import image4 from "../Assets/Projects/Mass Recruitment.jpg"
+import image5 from "../Assets/Projects/BreastCancer.jpg"
 
 const Work = () => {
   const workInfoData = [
     {
       image: image1,
       title: "Fees Dropdown",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
     },
     {
       image: image2,
       title: "Registration Negotiations",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
     },
     {
       image: image3,
       title: "SEED",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
     },
     {
-      image: image3,
+      image: image4,
       title: "Successful Mass Recruitment",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
     },
     {
-      image: image3,
+      image: image6,
       title: "Provincial Exchange Program",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
     },
     {
-      image: image3,
+      image: image5,
       title: "Breast Cancer Awareness",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+      // text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
     },
   ];
   return (

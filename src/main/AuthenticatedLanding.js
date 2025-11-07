@@ -5,9 +5,9 @@ import Footer from "../Components/Footer";
 import Work from "../Components/Work";
 import { Link } from "react-router-dom";
 
-import Slide1 from "../Assets/buse3.png";
-import Slide2 from "../Assets/buse2.png";
-import Slide3 from "../Assets/bindura1.png";
+import Slide1 from "../Assets/Projects/Anywhere.jpg";
+import Slide2 from "../Assets/theTeam/buseImage.jpg";
+import Slide3 from "../Assets/Projects/Growing.jpg";
 
 const AuthenticatedLanding = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,19 +89,19 @@ const AuthenticatedLanding = () => {
 
       <Work />
 
-      {/* 🔹 Chat & Recents Section */}
+      {/* Chat & Recents Section */}
       <div className="content-container">
         {/* Chat Area */}
-        <div className="chatspace">
+        {/* <div className="chatspace">
           <h3>Sentiment Space</h3>
           <div className="chat-input">
             <input type="text" placeholder="Type a message..." />
             <button>Send</button>
           </div>
-        </div>
+        </div> */}
 
         {/* Recents Area */}
-        <div className="recents">
+        {/* <div className="recents">
           <h3>Recents</h3>
           <ul>
             <li>
@@ -111,7 +111,7 @@ const AuthenticatedLanding = () => {
               <strong>Michael</strong> - Joined the platform
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
       <Footer />
