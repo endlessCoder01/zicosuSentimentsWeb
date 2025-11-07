@@ -132,10 +132,14 @@
 /* Hamburger button */
 .hamburger {
   display: none;
+  position: fixed;         /* ✅ Needed so top/right take effect */
+  top: 15px;
+  right: 20px;
   font-size: 24px;
   cursor: pointer;
-  margin-bottom: 20px;
+  color: #1e1e2f; 
 }
+
 
 /* ✅ Mobile styles */
 @media (max-width: 768px) {

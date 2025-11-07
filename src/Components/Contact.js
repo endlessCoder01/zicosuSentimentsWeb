@@ -31,6 +31,7 @@ const Contact = () => {
           title: "email submitted successful",
           text: "you shall start receiving emails related to ZICOSU",
           showConfirmButton: true,
+          confirmButtonColor: "green",
           timer: 2000,
           timerProgressBar: false,
         });
@@ -40,6 +41,7 @@ const Contact = () => {
           icon: "error",
           title: "Failed",
           text: result.error || "check your connectivity and try again",
+          confirmButtonColor: "red",
         });
       }
     } catch (error) {
@@ -47,6 +49,7 @@ const Contact = () => {
         icon: "error",
         title: "Failed",
         text: error.text || "check your connectivity and try again",
+        confirmButtonColor: "red",
       });
     }
   };

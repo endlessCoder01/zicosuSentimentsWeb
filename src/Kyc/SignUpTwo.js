@@ -22,7 +22,7 @@ const SignUpTwo = () => {
       const pageOne = await JSON.parse(lastPage);
       const image = await handleImageUpload(profileImage);
 
-      console.log("imageUri:", image);
+      // console.log("imageUri:", image);
 
       const new_User = {
         name: pageOne.name,
@@ -39,7 +39,7 @@ const SignUpTwo = () => {
         profilePic: image,
       };
 
-        console.log("new user", new_User)
+        // console.log("new user", new_User)
 
       const response = await fetch(`${APIURL}/auth/register`, {
         method: "POST",
@@ -88,7 +88,7 @@ const SignUpTwo = () => {
 
 
   const handleImageUpload = async (imageUri) => {
-    console.log("Image", imageUri);
+    // console.log("Image", imageUri);
 
     // const formData = new FormData();
     // const fileName = imageUri.split("/").pop();

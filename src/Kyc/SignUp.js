@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SignUpOne = () => {
-  const [reg_number, setReg_number] = useState();
-  const [name, setName] = useState();
-  const [surname, setSurname] = useState();
-  const [dob, setDob] = useState();
-  const [gender, setGender] = useState();
-  const [campus, setCampus] = useState();
+  const [reg_number, setReg_number] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [campus, setCampus] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -115,8 +115,7 @@ const SignUpOne = () => {
             {/* reg_number */}
             <div>
               <input
-                type=""
-                text
+                type="text"
                 value={reg_number}
                 onChange={(e) => setReg_number(e.target.value)}
                 required

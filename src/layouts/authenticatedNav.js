@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FaHome,
   FaInfoCircle,
-  FaPhoneAlt,
   FaServicestack,
   FaBars,
   FaUser,
@@ -10,8 +9,6 @@ import {
   FaPowerOff,
 } from "react-icons/fa";
 import "./LandingPage.css";
-import Footer from "../Components/Footer";
-import Work from "../Components/Work";
 import Logo from "../Assets/home-banner-image.png";
 import { Link } from "react-router-dom";
 
@@ -19,8 +16,13 @@ const AuthenticatedNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      {/* Sidebar Navbar */}
+    <>
+      {/* ✅ Hamburger Button (visible only on mobile) */}
+      <div className="hamburger" onClick={() => setIsOpen(true)}>
+        <FaBars size={24} />
+      </div>
+
+      {/* ✅ Sidebar */}
       <nav className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <h2 className="logo">
@@ -35,33 +37,33 @@ const AuthenticatedNav = () => {
 
         <ul>
           <li>
-            <Link to="/home">
+            <Link to="/home" onClick={() => setIsOpen(false)}>
               <FaHome className="icon" /> Home
             </Link>
           </li>
           <li>
-            <Link to="/sentiments">
+            <Link to="/sentiments" onClick={() => setIsOpen(false)}>
               <FaServicestack className="icon" /> Send Sentiments
             </Link>
           </li>
           <li>
-            <Link to="/profile">
+            <Link to="/profile" onClick={() => setIsOpen(false)}>
               <FaUser className="icon" /> Profile
             </Link>
           </li>
           <li>
-            <Link to="/about">
+            <Link to="/about" onClick={() => setIsOpen(false)}>
               <FaInfoCircle className="icon" /> About
             </Link>
           </li>
           <li>
-            <Link to="/logout">
+            <Link to="/logout" onClick={() => setIsOpen(false)}>
               <FaPowerOff className="icon" /> Logout
             </Link>
           </li>
         </ul>
       </nav>
-    </div>
+    </>
   );
 };
 

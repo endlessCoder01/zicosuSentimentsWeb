@@ -10,7 +10,6 @@ import Slide2 from "../Assets/theTeam/buseImage.jpg";
 import Slide3 from "../Assets/Projects/Growing.jpg";
 
 const AuthenticatedLanding = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 
   const slides = [
@@ -32,7 +31,6 @@ const AuthenticatedLanding = () => {
       {/* Main Content */}
 
       {/* Mobile Hamburger */}
-      <FaBars className="hamburger" onClick={() => setIsOpen(true)} />
       <h1 style={{ margin: 10 }}>
         <marquee>Welcome to Our Platform</marquee>
       </h1>
