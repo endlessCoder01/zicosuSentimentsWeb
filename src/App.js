@@ -8,7 +8,7 @@ import {
 import Landing from "./main/Landing";
 import Login from "./Kyc/Login";
 import AuthenticatedLanding from "./main/AuthenticatedLanding";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SentimentsPage from "./Components/Sentiments";
 import ContactUs from "./Components/ContactUs";
 import AboutUs from "./Components/AboutUs";
@@ -21,41 +21,52 @@ import SignOut from "./Kyc/Logout";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("isAuthenticated");
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const handleLogin = () => {
     setIsAuthenticated(true);
+    localStorage.setItem("isAuthenticated", "true"); 
   };
+
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated"); 
   };
 
   return (
-    <div>
-      <Router>
-        <Routes>
-          {isAuthenticated ? (
-            <>
-              <Route element={<AuthenticatedLayout />}>
-                <Route path="/home" element={<AuthenticatedLanding />} />
-                <Route path="/sentiments" element={<SentimentsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/logout" element={<SignOut onLogout={handleLogout} />} />
-              </Route>
-              <Route path="*" element={<Navigate to="/home" replace />} />
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<Landing />} />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/signup/one" element={<SignUpOne />} />
-              <Route path="/signup/two" element={<SignUpTwo />} />
-              <Route path="/login" element={<Login onLogin={handleLogin} />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </>
-          )}
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        {isAuthenticated ? (
+          <>
+            <Route element={<AuthenticatedLayout />}>
+              <Route path="/home" element={<AuthenticatedLanding />} />
+              <Route path="/sentiments" element={<SentimentsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route
+                path="/logout"
+                element={<SignOut onLogout={handleLogout} />}
+              />
+            </Route>
+            <Route path="*" element={<Navigate to="/home" replace />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Landing />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/signup/one" element={<SignUpOne />} />
+            <Route path="/signup/two" element={<SignUpTwo />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </>
+        )}
+      </Routes>
+    </Router>
   );
 }
 

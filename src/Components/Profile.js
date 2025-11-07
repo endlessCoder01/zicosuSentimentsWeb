@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import Userimage from "../Assets/theTeam/user.png";
 import { FaPen } from "react-icons/fa";
+import { APIURL } from "../services/config";
+
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -13,7 +15,7 @@ const ProfilePage = () => {
     bio: "",
     profilePic: "",
   });
-  const API_URL = "http://localhost:5001/upload";
+  const API_URL = `${APIURL}/upload`;
 
   const [isEditing, setIsEditing] = useState(false);
   const [token, setToken] = useState();
@@ -233,7 +235,7 @@ const ProfilePage = () => {
           <img
             src={
               newData?.profilePic
-                ? `http://localhost:5001/${newData.profilePic.replace(
+                ? `${APIURL}/${newData.profilePic.replace(
                     /\\/g,
                     "/"
                   )}`

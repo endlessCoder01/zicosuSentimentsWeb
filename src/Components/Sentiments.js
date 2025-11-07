@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { FaSearch, FaPaperPlane } from "react-icons/fa";
+import { APIURL } from "../services/config";
 
-const API_URL = "http://localhost:5001/sentiments";
+const API_URL = `${APIURL}/sentiments`;
 
 const SentimentsPage = () => {
   const [userInfo, setUserInfo] = useState();
@@ -64,7 +65,7 @@ const SentimentsPage = () => {
             : `${item.name} ${item.surname}`,
         message: item.sentiment,
         avatar: item.profile_url
-          ? `http://localhost:5001/${item.profile_url.replace(/\\/g, "/")}`
+          ? `${APIURL}/${item.profile_url.replace(/\\/g, "/")}`
           : "https://cdn-icons-png.flaticon.com/512/149/149071.png",
       }));
 
