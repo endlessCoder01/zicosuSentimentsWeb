@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { FaSearch, FaPaperPlane } from "react-icons/fa";
 import { APIURL } from "../services/config";
+import userImage from "../Assets/theTeam/user.png"
 
 const API_URL = `${APIURL}/sentiments`;
 
@@ -66,7 +67,7 @@ const SentimentsPage = () => {
         message: item.sentiment,
         avatar: item.profile_url
           ? `${APIURL}/${item.profile_url.replace(/\\/g, "/")}`
-          : "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+          : userImage,
       }));
 
       setPosts(formatted);
