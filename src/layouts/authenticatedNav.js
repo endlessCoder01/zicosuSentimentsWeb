@@ -55,7 +55,7 @@ const AuthenticatedNav = () => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/logout">
               <FaPowerOff className="icon" /> Logout
             </Link>
           </li>

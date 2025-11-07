@@ -12,7 +12,7 @@ const Landing = () => {
       <Home />
       <About />
       <Work />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Contact />
       <Footer />
     </div>

@@ -16,6 +16,7 @@ import AuthenticatedLayout from "./layouts/authenticatedLayout";
 import SignUpOne from "./Kyc/SignUp";
 import SignUpTwo from "./Kyc/SignUpTwo";
 import ProfilePage from "./Components/Profile";
+import SignOut from "./Kyc/Logout";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,16 +24,13 @@ function App() {
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
 
   return (
     <div>
       <Router>
-        {/* Show navbar depending on role */}
-        {/* {isAuthenticated ?
-          
-            <Navbar setIsAuthenticated={setIsAuthenticated}/>:<Navbar />
-          } */}
-
         <Routes>
           {isAuthenticated ? (
             <>
@@ -41,6 +39,7 @@ function App() {
                 <Route path="/sentiments" element={<SentimentsPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/about" element={<AboutUs />} />
+                <Route path="/logout" element={<SignOut onLogout={handleLogout} />} />
               </Route>
               <Route path="*" element={<Navigate to="/home" replace />} />
             </>
