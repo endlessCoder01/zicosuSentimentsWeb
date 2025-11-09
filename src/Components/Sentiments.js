@@ -2,17 +2,38 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { FaSearch, FaPaperPlane } from "react-icons/fa";
 import { APIURL } from "../services/config";
-import userImage from "../Assets/theTeam/user.png"
+import userImage from "../Assets/theTeam/user.png";
+import { FaCloud } from "react-icons/fa";
 
 const API_URL = `${APIURL}/sentiments`;
 
 const SentimentsPage = () => {
   const [userInfo, setUserInfo] = useState();
   const [token, setToken] = useState();
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      author: "Advisor",
+      message: "Hey Buddie make a sentiment post it is fun!",
+      avatar: "https://i.pravatar.cc/150?img=1",
+    },
+  ]);
+  const [newPost, setNewPost] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getUserLocal();
   }, []);
+
+  useEffect(() => {
+  if (loading) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+}, [loading]);
+
 
   useEffect(() => {
     if (token) {
@@ -33,19 +54,13 @@ const SentimentsPage = () => {
     setUserInfo(user.token.userDetails.user);
   };
 
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      author: "Advisor",
-      message: "Hey Buddie make a sentiment post it is fun!",
-      avatar: "https://i.pravatar.cc/150?img=1",
-    }
-  ]);
-  const [newPost, setNewPost] = useState("");
-  const [search, setSearch] = useState("");
-
   // Fetch sentiments
   const fetchSentiments = async () => {
+  // if (posts.length === 1 || posts.length <= 1) {
+  //   setLoading(true);
+  // }
+
+
     try {
       const res = await fetch(`${API_URL}/with_full_detail`, {
         method: "GET",
@@ -53,9 +68,8 @@ const SentimentsPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      
 
-      if (!res.ok) throw new Error("Failed to fetch sentiments");
+      // if (!res.ok) throw new Error("Failed to fetch sentiments");
       const data = await res.json();
       console.log("res", data);
 
@@ -72,21 +86,29 @@ const SentimentsPage = () => {
       }));
 
       setPosts(formatted);
+      setLoading(false)
     } catch (error) {
-      console.error("Error fetching sentiments:", error);
-      Swal.fire(
-        "Error",
-        "Could not load sentiments. Please try again.",
-        "error"
-      );
-    }
+      // console.error("Error fetching sentiments:", error);
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        title: "Error fetching sentiments. Retrying...",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      } finally {
+    setLoading(false);
+  }
   };
 
   // Post new sentiment
   const postSentiment = async (sentimentText) => {
+  setLoading(true)
     try {
       const payload = {
-        reg_number: "B220946B",
+        reg_number: userInfo.reg_number,
         sentiment: sentimentText,
       };
 
@@ -103,9 +125,11 @@ const SentimentsPage = () => {
       const data = await res.json();
       return data;
     } catch (error) {
-      console.error("Error posting sentiment:", error);
+      // console.error("Error posting sentiment:", error);
       Swal.fire("Error", "Could not post sentiment. Try again.", "error");
       return null;
+    }finally{
+    setLoading(false)
     }
   };
 
@@ -190,7 +214,7 @@ const SentimentsPage = () => {
             letterSpacing: "0.5px",
           }}
         >
-          Sentiment Space 💭
+          Sentiment Space <FaCloud size={20} style={{marginTop: 5}}/>
         </h1>
 
         <div
@@ -314,10 +338,53 @@ const SentimentsPage = () => {
               fontSize: "15px",
             }}
           >
-            No sentiments match your search 🔍
+            Waiting for Sentiments...
           </p>
         )}
       </div>
+
+
+      {loading && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      background: "rgba(255, 255, 255, 0.8)",
+      backdropFilter: "blur(4px)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      pointerEvents: "all",
+    }}
+  >
+    <div
+      style={{
+        width: "60px",
+        height: "60px",
+        border: "6px solid #ccc",
+        borderTopColor: "#1da1f2",
+        borderRadius: "50%",
+        animation: "spin 1s linear infinite",
+      }}
+    ></div>
+    <p
+      style={{
+        marginTop: "15px",
+        fontSize: "16px",
+        color: "#1da1f2",
+        fontWeight: "600",
+      }}
+    >
+      Loading sentiments...
+    </p>
+  </div>
+)}
+
 
       {/* Post Box */}
       <div

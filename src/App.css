@@ -7,6 +7,12 @@
 /* * {
   outline: 1px solid red;
 } */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 img {
   max-width: 100%;
