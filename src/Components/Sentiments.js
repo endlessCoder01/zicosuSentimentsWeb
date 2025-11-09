@@ -53,10 +53,11 @@ const SentimentsPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log("res", res);
+      
 
       if (!res.ok) throw new Error("Failed to fetch sentiments");
       const data = await res.json();
+      console.log("res", data);
 
       const formatted = data.map((item) => ({
         id: item.sentiment_id,

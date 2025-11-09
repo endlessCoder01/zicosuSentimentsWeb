@@ -15,12 +15,21 @@ const SignUpTwo = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
+  const Validator = async()=>{
+      if (profileImage === `` || profileImage === null){
+      return 
+      }else{
+        const image = await handleImageUpload(profileImage);
+        return image
+      }
+  }
   const signUp = async () => {
     setLoading(true);
     try {
       const lastPage = localStorage.getItem("user");
       const pageOne = await JSON.parse(lastPage);
-      const image = await handleImageUpload(profileImage);
+      const image = await Validator();
 
       // console.log("imageUri:", image);
 
