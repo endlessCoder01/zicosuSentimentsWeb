@@ -27,7 +27,7 @@ const AuthenticatedLanding = () => {
   }, [slides.length]);
 
   return (
-    <div>
+    <div className="screen-container">
       {/* Main Content */}
 
       {/* Mobile Hamburger */}
@@ -36,7 +36,7 @@ const AuthenticatedLanding = () => {
       </h1>
 
       {/* CTA Section */}
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center" }} >
         {/* 🔹 Image Slider */}
         <div
           style={{
@@ -84,8 +84,7 @@ const AuthenticatedLanding = () => {
           </button>
         </Link>
       </div>
-
-      <Work />
+       <Work />
 
       {/* Chat & Recents Section */}
       <div className="content-container">

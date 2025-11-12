@@ -1,6 +1,4 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Reem Kufi", sans-serif !important;
 }
@@ -29,8 +27,6 @@ body {
   overflow-x: hidden; */
   overflow-x: hidden;
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -275,7 +271,7 @@ nav {
   margin-top: 1.5rem;
 }
 .work-section-wrapper {
-  margin-top: 15rem;
+  margin-top: 8rem;
 }
 .work-section-top p {
   text-align: center;
@@ -392,7 +388,7 @@ nav {
   .about-section-text-container {
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
   .secondary-button {
     font-size: 1rem;

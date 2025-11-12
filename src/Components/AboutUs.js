@@ -7,10 +7,10 @@ import Tsitsi from "../Assets/theTeam/Tsitsi.png";
 import Sean from "../Assets/theTeam/Sean.png";
 import Delight from "../Assets/theTeam/Delight.png";
 import Tawana from "../Assets/theTeam/Tawana.png";
-import Ernest from "../Assets/theTeam/Ernest.png"
-import Nyasha from "../Assets/theTeam/Nyasha.png"
-import Thelma from "../Assets/theTeam/Thelma.png"
-import Munashe from "../Assets/theTeam/Munashe.png"
+import Ernest from "../Assets/theTeam/Ernest.png";
+import Nyasha from "../Assets/theTeam/Nyasha.png";
+import Thelma from "../Assets/theTeam/Thelma.png";
+import Munashe from "../Assets/theTeam/Munashe.png";
 
 const AboutUs = () => {
   const sections = [
@@ -34,55 +34,82 @@ const AboutUs = () => {
   const team = [
     { name: "Nyasha Mutande", role: "Chairman", image: Nyasha },
     { name: "Trevor Ncube", role: "Secretary General (SG)", image: Trevor },
-    { name: "Enerst Ligoya", role: "Secretary for Recruitment and Ideology (SRI)", image: Ernest },
-    { name: "Sean Zihwi", role: "Secretary for Information and Publicity", image: Sean },
+    {
+      name: "Enerst Ligoya",
+      role: "Secretary for Recruitment and Ideology (SRI)",
+      image: Ernest,
+    },
+    {
+      name: "Sean Zihwi",
+      role: "Secretary for Information and Publicity",
+      image: Sean,
+    },
     { name: "Munashe Mudoti", role: "Cyber Security Director", image: Munashe },
-    { name: "Tsitsi Tauya", role: "Secretary for Gender and Health (SGH)", image: Tsitsi },
+    {
+      name: "Tsitsi Tauya",
+      role: "Secretary for Gender and Health (SGH)",
+      image: Tsitsi,
+    },
     { name: "Rutendo Mahachi", role: "Treasurer General (TG)", image: Rutendo },
-    { name: "Delight Kativhu", role: "Secretary for Business and Ecconomic Affairs", image: Delight },
+    {
+      name: "Delight Kativhu",
+      role: "Secretary for Business and Ecconomic Affairs",
+      image: Delight,
+    },
     { name: "Thelma", role: "Secretary for External Affairs", image: Thelma },
-    { name: "Tawana Mangani", role: "Secretary for Social Welfare", image: Tawana },
+    {
+      name: "Tawana Mangani",
+      role: "Secretary for Social Welfare",
+      image: Tawana,
+    },
     { name: "Naboth Nemaire", role: "Secreatary for Education", image: Naboth },
-    { name: "Hope Kashitiku", role: "Secreatary for Welfare of the Differently Abled Persons", image: Hope },
+    {
+      name: "Hope Kashitiku",
+      role: "Secreatary for Welfare of the Differently Abled Persons",
+      image: Hope,
+    },
   ];
 
   return (
-    <div style={styles.page}>
-      <h1 style={styles.header}>About Us</h1>
-      <p style={styles.subheader}>
-        Learn more about our story, our values, and the team behind our mission.
-      </p>
+    <div className="screen-container">
+      <div style={styles.page}>
+        <h1 style={styles.header}>About Us</h1>
+        <p style={styles.subheader}>
+          Learn more about our story, our values, and the team behind our
+          mission.
+        </p>
 
-      {/* Info Cards */}
-      <div style={styles.cardContainer}>
-        {sections.map((section, index) => (
-          <div key={index} style={styles.card}>
-            <h2 style={styles.cardTitle}>{section.title}</h2>
-            <p style={styles.cardContent}>{section.content}</p>
-          </div>
-        ))}
-      </div>
+        {/* Info Cards */}
+        <div style={styles.cardContainer}>
+          {sections.map((section, index) => (
+            <div key={index} style={styles.card}>
+              <h2 style={styles.cardTitle}>{section.title}</h2>
+              <p style={styles.cardContent}>{section.content}</p>
+            </div>
+          ))}
+        </div>
 
-      {/* Team Section */}
-      <h2 style={{ ...styles.header, marginTop: "50px" }}>Our Team</h2>
-      <div style={styles.teamContainer}>
-        {team.map((member, index) => (
-          <div key={index} style={styles.teamCard}>
-            <img
-              src={member.image}
-              alt={member.name}
-              style={{
-                ...styles.teamImage,
-                imageRendering: "auto",        // ensures smooth scaling
-                transform: "translateZ(0)",     // improves rendering on high DPI
-                backfaceVisibility: "hidden",
-              }}
-              loading="lazy" // optional: improves performance
-            />
-            <h3 style={styles.teamName}>{member.name}</h3>
-            <p style={styles.teamRole}>{member.role}</p>
-          </div>
-        ))}
+        {/* Team Section */}
+        <h2 style={{ ...styles.header, marginTop: "50px" }}>Our Team</h2>
+        <div style={styles.teamContainer}>
+          {team.map((member, index) => (
+            <div key={index} style={styles.teamCard}>
+              <img
+                src={member.image}
+                alt={member.name}
+                style={{
+                  ...styles.teamImage,
+                  imageRendering: "auto", // ensures smooth scaling
+                  transform: "translateZ(0)", // improves rendering on high DPI
+                  backfaceVisibility: "hidden",
+                }}
+                loading="lazy" // optional: improves performance
+              />
+              <h3 style={styles.teamName}>{member.name}</h3>
+              <p style={styles.teamRole}>{member.role}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -149,8 +176,8 @@ const styles = {
     textAlign: "center",
   },
   teamImage: {
-    width: "120px",           // slightly larger for clarity
-    height: "120px",          // matches original shape
+    width: "120px", // slightly larger for clarity
+    height: "120px", // matches original shape
     borderRadius: "50%",
     objectFit: "cover",
     marginBottom: "15px",

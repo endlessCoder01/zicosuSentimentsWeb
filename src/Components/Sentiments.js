@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { FaSearch, FaPaperPlane } from "react-icons/fa";
+import { FaSearch, FaPaperPlane, FaArrowLeft } from "react-icons/fa";
 import { APIURL } from "../services/config";
 import userImage from "../Assets/theTeam/user.png";
 import { FaCloud } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const API_URL = `${APIURL}/sentiments`;
 
@@ -21,6 +23,7 @@ const SentimentsPage = () => {
   ]);
   const [newPost, setNewPost] = useState("");
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserLocal();
@@ -184,11 +187,15 @@ const SentimentsPage = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         background: "#f2f5f9",
         overflow: "hidden",
+           justifyContent: "space-between",
+    minHeight: "100vh"
       }}
     >
+
       {/* Header */}
       <div
         style={{
@@ -205,6 +212,36 @@ const SentimentsPage = () => {
           position: "relative",
         }}
       >
+          {/* Top Row: Back Arrow + Title */}
+  <div
+    style={{
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+    }}
+  >
+    {/* Back Arrow */}
+    <FaArrowLeft
+onClick={() => navigate(-1)}
+      style={{
+        position: "absolute",
+        left: "15px",
+        color: "#1da1f2",
+        fontSize: "22px",
+        cursor: "pointer",
+        transition: "transform 0.2s ease, color 0.2s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.transform = "scale(1.15)";
+        e.target.style.color = "#0c8ae4";
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.transform = "scale(1)";
+        e.target.style.color = "#1da1f2";
+      }}
+    />
         <h1
           style={{
             margin: 0,
@@ -216,7 +253,7 @@ const SentimentsPage = () => {
         >
           Sentiment Space <FaCloud size={20} style={{marginTop: 5}}/>
         </h1>
-
+</div>
         <div
           style={{
             marginTop: "12px",

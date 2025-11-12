@@ -14,7 +14,8 @@ const About = () => {
       </div>
       <div className="about-section-text-container">
         <p className="primary-subheading">About</p>
-        <h1 className="primary-heading">zicosu as you know it</h1>
+        <h1 className="primary-heading">ZICOSU AS YOU</h1>
+        <h1 className="primary-heading">KNOW IT</h1>
         <p className="primary-text">
           Is a passionate team dedicated to empowering communities through
           education, innovation, and technology.
