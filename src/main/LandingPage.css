@@ -41,12 +41,14 @@
   padding: 20px 0 0 0; /* top padding to create gap */
   margin: 0;
   width: 100%;
+  margin-top: 30px;
 }
 
 .sidebar ul li {
   display: flex;
   align-items: center;
   padding: 12px 10px;
+  margin: 15px 0;
   cursor: pointer;
   border-radius: 8px;
   transition: background 0.3s ease;
@@ -54,18 +56,6 @@
 
 .sidebar ul li:hover {
   background: #6b6beb;
-}
-
-
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.sidebar ul li {
-  margin: 15px 0;
 }
 
 .sidebar ul li a {
@@ -83,11 +73,13 @@
 }
 
 .main-content {
+  flex: 1;
   margin-left: 220px; /* push content aside so sidebar doesn't overlap */
+  background: #f5f5f5;
+  overflow-y: auto;
+  height: 100vh;
   padding: 20px;
 }
-
-
 
 .icon {
   margin-right: 10px;
@@ -98,15 +90,6 @@
   font-size: 20px;
   cursor: pointer;
   display: none;
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  margin-left: 220px;
-  background: #f5f5f5;
-  overflow-y: auto;
-  height: 100vh;
 }
 
 .main-content h1 {
@@ -132,16 +115,11 @@
 /* Hamburger button */
 .hamburger {
   display: none;
-  font-size: 34px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.hamburger {
-  display: none;
   position: fixed;         /* ✅ Needed so top/right take effect */
   top: 15px;
   right: 20px;
+  font-size: 24px;
+  cursor: pointer;
   color: #1e1e2f; 
 }
 
