@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
-const SignOut = ({ onLogout }) => {
+const SignOut = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
   useEffect(() => {
     LogOut();
   }, []);
 
   const LogOut = async () => {
     try {
-      localStorage.clear();
-      onLogout();
+      logout();
 
       Swal.fire({
         toast: true,
         position: "top-end",
         icon: "success",
-        title: "Logged Out successful",
+        title: "Logged out successfully",
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
       });
+
+      navigate("/login");
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -28,6 +34,8 @@ const SignOut = ({ onLogout }) => {
       });
     }
   };
+
+  return null;
 };
 
 export default SignOut;

@@ -2,30 +2,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { APIURL } from "../services/config";
+import { useAuth } from "../hooks/useAuth";
+import { useAPI } from "../hooks/useAPI";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const { callAPI } = useAPI();
 
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${APIURL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
+      const result = await callAPI('/auth/login', 'POST', {
+        email: email,
+        password: password,
       });
 
-      const result = await response.json();
-      if (response.ok) {
-        // console.log("login", result);
-        if (result.token.userDetails.user.status === "active") {
-          onLogin();
-          localStorage.setItem('activeUser', JSON.stringify(result))
+      if (result.success) {
+        const userData = result.data.token.userDetails.user;
+        const token = result.data.token.token;
+
+        if (userData.status === "active") {
+          login(userData, token);
 
           Swal.fire({
             toast: true,
@@ -33,23 +34,23 @@ const Login = ({ onLogin }) => {
             icon: "success",
             title: "Login successful",
             showConfirmButton: false,
-            timer: 2000, 
+            timer: 2000,
             timerProgressBar: true,
           });
+
+          navigate("/home");
         } else {
           Swal.fire({
             icon: "error",
             title: "Login Failed",
-            text: `this account is ${result.token.userDetails.user.status}`,
+            text: `This account is ${userData.status}`,
           });
         }
       } else {
-        const errorMessage =
-          result.response || "Invalid credentials or user not found.";
         Swal.fire({
           icon: "error",
           title: "Login Failed",
-          text: errorMessage,
+          text: result.message,
         });
       }
     } catch (error) {

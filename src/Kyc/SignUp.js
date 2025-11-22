@@ -57,8 +57,8 @@ const SignUpOne = () => {
   };
 
   const signIn = () => {
-    navigate('/login')
-  }
+    navigate('/login');
+  };
 
   return (
     <div
