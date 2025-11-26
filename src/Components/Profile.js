@@ -50,7 +50,7 @@ const ProfilePage = () => {
     const data = localStorage.getItem("activeUser");
     if (!data) return;
     const user = JSON.parse(data);
-    console.log("hoyo", user.token.userDetails.user);
+    // console.log("hoyo", user.token.userDetails.user);
     setToken(user.token.token);
     setUser(user.token.userDetails.user);
   };
@@ -67,9 +67,8 @@ const ProfilePage = () => {
       if (!res.ok) throw new Error("Failed to fetch profilePic");
       const data = await res.json();
 
-      console.log("profile", data);
+      // console.log("profile", data);
       const dum = { ...user, profilePic: data.file_url };
-      console.log("hdfsjk", dum);
       setUser(dum);
       setNewData(dum);
     } catch (error) {
