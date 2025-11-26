@@ -18,7 +18,7 @@ const SentimentsPage = () => {
       id: 1,
       author: "Advisor",
       message: "Hey Buddie make a sentiment post it is fun!",
-      avatar: "https://i.pravatar.cc/150?img=1",
+      avatar: userImage,
     },
   ]);
   const [newPost, setNewPost] = useState("");
@@ -74,20 +74,21 @@ const SentimentsPage = () => {
 
       // if (!res.ok) throw new Error("Failed to fetch sentiments");
       const data = await res.json();
-      console.log("res", data);
+      // console.log("res", data);
 
       const formatted = data.map((item) => ({
         id: item.sentiment_id,
         author:
           item.reg_number === userInfo.reg_number
             ? "You"
-            : `${item.name} ${item.surname}`,
+            : `${item.username} (${item.name})`,
         message: item.sentiment,
         avatar: item.profile_url
           ? `${APIURL}/${item.profile_url.replace(/\\/g, "/")}`
           : userImage,
       }));
 
+      // console.log('Posts', formatted);
       setPosts(formatted);
       setLoading(false)
     } catch (error) {
@@ -108,6 +109,7 @@ const SentimentsPage = () => {
 
   // Post new sentiment
   const postSentiment = async (sentimentText) => {
+    console.log("new Post to send", sentimentText)
   setLoading(true)
     try {
       const payload = {

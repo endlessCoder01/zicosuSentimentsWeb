@@ -6,8 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import ErrorBoundary from "./components/Common/ErrorBoundary";
-import ProtectedRoute from "./components/Common/ProtectedRoute";
+import ErrorBoundary from "./Components/Common/ErrorBoundary";
+import ProtectedRoute from "./Components/Common/ProtectedRoute";
 
 // Public pages
 import Landing from "./main/Landing";
@@ -27,7 +27,7 @@ import SignOut from "./Kyc/Logout";
 import AuthenticatedLayout from "./layouts/authenticatedLayout";
 
 // Error pages
-import NotFound from "./components/Pages/NotFound";
+import NotFound from "./Components/Pages/NotFound";
 
 function App() {
   return (

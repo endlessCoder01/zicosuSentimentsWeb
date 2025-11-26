@@ -16,7 +16,7 @@ const Login = () => {
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
-      const result = await callAPI('/auth/login', 'POST', {
+      const result = await callAPI("/auth/login", "POST", {
         email: email,
         password: password,
       });

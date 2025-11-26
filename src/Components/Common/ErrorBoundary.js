@@ -1,5 +1,5 @@
-import React from 'react';
-import Swal from 'sweetalert2';
+import React from "react";
+import Swal from "sweetalert2";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,12 +12,12 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error("Error caught by boundary:", error, errorInfo);
   }
 
   handleReset = () => {
     this.setState({ hasError: false, error: null });
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   render() {
@@ -25,49 +25,59 @@ class ErrorBoundary extends React.Component {
       return (
         <div
           style={{
-            textAlign: 'center',
-            padding: '100px 20px',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#f5f5f5',
+            textAlign: "center",
+            padding: "100px 20px",
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#f5f5f5",
           }}
         >
           <div
             style={{
-              backgroundColor: 'white',
-              padding: '40px',
-              borderRadius: '16px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              maxWidth: '500px',
+              backgroundColor: "white",
+              padding: "40px",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              maxWidth: "500px",
             }}
           >
-            <h1 style={{ fontSize: '48px', color: '#fe0d0d', marginBottom: '20px' }}>
+            <h1
+              style={{
+                fontSize: "48px",
+                color: "#fe0d0d",
+                marginBottom: "20px",
+              }}
+            >
               ⚠️ Oops!
             </h1>
-            <p style={{ fontSize: '18px', color: '#333', marginBottom: '10px' }}>
+            <p
+              style={{ fontSize: "18px", color: "#333", marginBottom: "10px" }}
+            >
               Something went wrong
             </p>
-            <p style={{ fontSize: '14px', color: '#666', marginBottom: '30px' }}>
-              {this.state.error?.message || 'An unexpected error occurred'}
+            <p
+              style={{ fontSize: "14px", color: "#666", marginBottom: "30px" }}
+            >
+              {this.state.error?.message || "An unexpected error occurred"}
             </p>
             <button
               onClick={this.handleReset}
               style={{
-                padding: '12px 30px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                backgroundColor: '#fe0d0d',
-                color: 'white',
-                border: 'none',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                transition: 'background 0.3s',
+                padding: "12px 30px",
+                fontSize: "16px",
+                fontWeight: "bold",
+                backgroundColor: "#fe0d0d",
+                color: "white",
+                border: "none",
+                borderRadius: "25px",
+                cursor: "pointer",
+                transition: "background 0.3s",
               }}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = '#e4280f')}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = '#fe0d0d')}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#e4280f")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#fe0d0d")}
             >
               Go Home
             </button>

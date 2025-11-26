@@ -18,7 +18,7 @@ const SignUpOne = () => {
       const user = {
         reg_number: reg_number,
         name: name,
-        surname: name,
+        surname: surname,
         dob: dob,
         gender: gender,
         campus: campus,
@@ -35,7 +35,7 @@ const SignUpOne = () => {
         showConfirmButton: false,
         timer: 1500,
         timerProgressBar: true,
-        color: "rgba(9, 71, 28, 0.75)"
+        color: "rgba(9, 71, 28, 0.75)",
       });
 
       navigate("/signup/two");
@@ -57,7 +57,7 @@ const SignUpOne = () => {
   };
 
   const signIn = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -410,7 +410,7 @@ const SignUpOne = () => {
           </div>
 
           <div style={{ textAlign: "center" }}>
-            <button 
+            <button
               type="button"
               style={{
                 color: "#002966",

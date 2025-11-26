@@ -1,54 +1,59 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-export default function ErrorPage({ statusCode = 500, message = 'Internal Server Error' }) {
+export default function ErrorPage({
+  statusCode = 500,
+  message = "Internal Server Error",
+}) {
   const navigate = useNavigate();
 
   return (
     <div
       style={{
-        textAlign: 'center',
-        padding: '100px 20px',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f5f5f5',
+        textAlign: "center",
+        padding: "100px 20px",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5f5f5",
       }}
     >
       <div
         style={{
-          backgroundColor: 'white',
-          padding: '40px',
-          borderRadius: '16px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          maxWidth: '500px',
+          backgroundColor: "white",
+          padding: "40px",
+          borderRadius: "16px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          maxWidth: "500px",
         }}
       >
-        <h1 style={{ fontSize: '64px', color: '#fe0d0d', marginBottom: '10px' }}>
+        <h1
+          style={{ fontSize: "64px", color: "#fe0d0d", marginBottom: "10px" }}
+        >
           {statusCode}
         </h1>
-        <h2 style={{ fontSize: '24px', color: '#333', marginBottom: '15px' }}>
+        <h2 style={{ fontSize: "24px", color: "#333", marginBottom: "15px" }}>
           {message}
         </h2>
-        <p style={{ fontSize: '16px', color: '#666', marginBottom: '30px' }}>
+        <p style={{ fontSize: "16px", color: "#666", marginBottom: "30px" }}>
           Something went wrong on our end. Please try again later.
         </p>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
           style={{
-            padding: '12px 30px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-            backgroundColor: '#fe0d0d',
-            color: 'white',
-            border: 'none',
-            borderRadius: '25px',
-            cursor: 'pointer',
-            transition: 'background 0.3s',
+            padding: "12px 30px",
+            fontSize: "16px",
+            fontWeight: "bold",
+            backgroundColor: "#fe0d0d",
+            color: "white",
+            border: "none",
+            borderRadius: "25px",
+            cursor: "pointer",
+            transition: "background 0.3s",
           }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = '#e4280f')}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = '#fe0d0d')}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#e4280f")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#fe0d0d")}
         >
           Go Home
         </button>
